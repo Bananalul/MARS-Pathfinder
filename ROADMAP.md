@@ -43,6 +43,7 @@ Challenge: **Interplanetary Survival Guide: Martian Map** (NASA Space Apps 2026)
 | M23 | Interface rework: tabs Route / Point / Zones / Bases / Settings / Data; draw-it-yourself and A → B planner each with their own controls and collapsible explanations; route summary cards on the map; start time and route walk docked next to the elevation profile; planning blocked until a traveller is chosen |
 | M24 | Settings: astronaut or vehicle (LRV, Curiosity, Perseverance, pressurised-rover concept, custom) with rations and cabin supplies; vehicle checks (seats, range, O₂, water, food, medical); bases on the route act as resupply stops (route split into legs); sketching on rover images |
 | M25 | Data audit: every value checked against NASA/USGS sources, seven corrections (Mars gravity, scale height, radiation shielding after Guo et al. 2017, GMM-3 naming, IAU volcano coordinates, suit mass, impact positions marked approximate); all references resolved by DOI (see DATA_AUDIT.md) |
+| M26 | Real NASA photos on every info page (spacecraft, landers, rovers, features); skippable step-by-step tutorial for first-time users |
 
 ## Possible next steps
 

@@ -726,7 +726,7 @@ details.how > div { margin-top: 4px; line-height: 1.45; color: var(--muted, #aab
 .route-dock { position: absolute; right: 0; bottom: 0; width: 470px; max-height: calc(100% - 20px); overflow-y: auto; z-index: 900;
   background: rgba(20, 16, 14, 0.97); border: 1px solid var(--panel-border); border-radius: 8px 0 0 0; padding: 8px 10px; box-sizing: border-box; }
 .route-dock[hidden] { display: none; }
-.dock-head { cursor: move; padding-bottom: 6px; margin-bottom: 6px; border-bottom: 1px solid var(--panel-border); user-select: none; }
+.dock-head { cursor: default; padding-bottom: 6px; margin-bottom: 6px; border-bottom: 1px solid var(--panel-border); user-select: none; }
 .route-dock .route-time { border: none; padding: 0; margin: 0 0 6px; }
 .route-dock .anim-inner { position: static; width: auto; max-width: none; box-shadow: none; border: none; border-top: 1px solid var(--panel-border); border-radius: 0; padding: 8px 0 0; margin: 0; background: none; }
 .route-dock .anim-inner .anim-head { cursor: default; }
@@ -744,3 +744,34 @@ body.dock-open .profile-panel { margin-right: 470px; }
 .info-photo img { display: block; width: 100%; max-height: 260px; object-fit: cover; border-radius: 6px; border: 1px solid var(--panel-border); background: #111; }
 .info-photo figcaption { font-size: 10.5px; color: var(--muted, #aab); margin-top: 4px; line-height: 1.35; }
 .info-photo figcaption a { color: var(--accent); }
+
+/* ---- Tutorial ---- */
+.tour-start { margin-right: 8px; border: 1px solid var(--accent); color: #fff; background: transparent; border-radius: 4px; padding: 4px 10px; cursor: pointer; font-weight: 600; }
+.tour-start:hover { background: rgba(255, 255, 255, 0.08); }
+.tour-root { position: fixed; inset: 0; z-index: 10000; pointer-events: auto; }
+.tour-hole { position: fixed; border-radius: 8px; border: 2px solid var(--accent); box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.62); transition: all 0.25s ease; pointer-events: none; }
+.tour-card { position: fixed; width: 340px; max-width: calc(100vw - 16px); background: #1d1a18; color: #eee; border: 1px solid var(--accent); border-radius: 10px; padding: 14px 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); transition: left 0.25s ease, top 0.25s ease; }
+.tour-card.tour-center { left: 50% !important; top: 50% !important; transform: translate(-50%, -50%); width: 420px; }
+.tour-card h3 { margin: 4px 0 8px; font-size: 16px; color: #fff; }
+.tour-card p { margin: 0 0 12px; line-height: 1.5; font-size: 13px; }
+.tour-count { color: var(--muted, #aab); }
+.tour-actions { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.tour-skip { background: none; border: none; color: var(--muted, #aab); text-decoration: underline; cursor: pointer; padding: 4px 0; }
+.tour-nav { display: flex; gap: 6px; }
+.tour-nav button { padding: 6px 12px; border-radius: 4px; }
+.tour-nav button:disabled { opacity: 0.35; }
+.tour-card { width: 400px; }
+.tour-card.tour-wide { width: 480px; }
+.tour-card .tour-text { font-size: 13px; line-height: 1.5; margin: 0 0 10px; max-height: 52vh; overflow-y: auto; }
+.tour-card .tour-text ul, .tour-card .tour-text ol { margin: 6px 0 4px; padding-left: 20px; }
+.tour-card .tour-text li { margin: 3px 0; }
+.tour-card .tour-text code { background: rgba(255,255,255,0.08); padding: 0 4px; border-radius: 3px; }
+.tour-chapters { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+.tour-chapters button { text-align: left; padding: 7px 9px; border: 1px solid var(--panel-border); border-radius: 6px; background: rgba(255,255,255,0.04); color: #eee; cursor: pointer; font-size: 12.5px; display: flex; gap: 6px; align-items: baseline; }
+.tour-chapters button:hover { border-color: var(--accent); }
+.tour-chapters button span { margin-left: auto; color: var(--muted, #aab); font-size: 11px; }
+.tour-progress { height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 10px; }
+.tour-progress i { display: block; height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.25s; }
+.tour-menu { background: none; border: none; color: var(--accent); cursor: pointer; margin-left: 10px; padding: 4px 0; }
+.panel-left, .panel-right { overflow-x: hidden; }
+.th-theme { max-width: 100%; box-sizing: border-box; }

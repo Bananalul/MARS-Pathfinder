@@ -648,6 +648,8 @@ const I18N_DE = {
   "Assumption (walking resistance simplified as rolling resistance)": "Annahme (Gehwiderstand vereinfacht wie Rollwiderstand)",
   "not applicable": "nicht anwendbar",
   Assumption: "Annahme",
+  "Show the tutorial": "Tutorial anzeigen",
+  "? Tutorial": "? Tutorial",
   "Choose who travels first": "Zuerst auswählen, wer unterwegs ist",
   "Select astronaut or vehicle in Settings and click “Yes, apply” – the slope limits and the crew check depend on it.": "In den Einstellungen Astronaut oder Fahrzeug wählen und „Ja, übernehmen“ klicken – Hanglimits und Crew-Check hängen davon ab.",
   "Open Settings": "Einstellungen öffnen",

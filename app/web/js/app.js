@@ -663,7 +663,7 @@ new MutationObserver(() => (routeCards.hidden = routeStats.hidden)).observe(rout
 routeCards.hidden = routeStats.hidden;
 
 // "Start time and route walk" sits to the right of the elevation profile whenever a route exists
-// (drag its title bar to move it; it docks again the next time the profile opens).
+// (fixed in place, not draggable).
 const routeDock = document.getElementById("route-dock");
 const profilePanel = document.getElementById("profile-panel");
 function syncDock() {
@@ -678,12 +678,6 @@ function syncDock() {
 }
 new MutationObserver(syncDock).observe(profilePanel, { attributes: true, attributeFilter: ["hidden"] });
 syncDock();
-makeDraggable(routeDock, routeDock.querySelector(".dock-head"));
-routeDock.querySelector(".dock-head").addEventListener("pointerdown", () => {
-  routeDock.dataset.moved = "1";
-  document.body.classList.remove("dock-open");
-  window.dispatchEvent(new Event("resize"));
-});
 document.getElementById("route-improve").addEventListener("click", () => {
   const w = planner.waypoints();
   if (w.length < 2) return;

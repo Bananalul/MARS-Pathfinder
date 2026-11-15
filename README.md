@@ -19,6 +19,8 @@ Every value in the app is labelled **measured** (NASA/USGS data), **derived/mode
 
 **[Open MARS Pathfinder](https://bananalul.github.io/MARS-Pathfinder/)** – runs in the browser, no installation. Source code: https://github.com/Bananalul/MARS-Pathfinder
 
+A skippable **tutorial** opens on the first visit and can be restarted any time with **"? Tutorial"** at the top.
+
 Quick start:
 1. Open **Settings**, choose *Astronaut on foot* or *Vehicle*, and click **Yes, apply**. Planning is blocked until a traveller is chosen.
 2. Choose *Jezero crater* at the top.
@@ -65,7 +67,7 @@ After that they also work on GitHub Pages.
 - **A – Draw it yourself.** Click waypoints and drag them. **Improve** keeps your shape as via points and replaces each piece with the safest path between them. Each box has its own Undo, Reverse and Clear.
 - **B – A → B planner (safest route).** Coarse corridor on MOLA/CTX, then fine legs on the best DTM. A* with 16 neighbours on cells that aggregate all DTM pixels inside them. It avoids critical slopes, loose ground (THEMIS night IR), "avoid" zones and areas without data. Unsafe spots found in the detailed check are fed back and the corridor is re-planned (up to 14 rounds). A priority slider runs from fastest to safest, and an optional hazard map shows the planning grid.
 - **Results.** Length, ascent, travel time and max. slope as cards at the top right of the map. Elevation profile with slope classes, critical sections and a red warning title on the map when something is critical.
-- **Start time and route walk.** Docked next to the elevation profile. Set the start in UTC or as the next local Mars time. The walk animates time, temperature, UV, dose and a crew figure (O₂, water, bladder, strain, EVA time) along the route.
+- **Start time and route walk.** Fixed next to the elevation profile. Set the start in UTC or as the next local Mars time. The walk animates time, temperature, UV, dose and a crew figure (O₂, water, bladder, strain, EVA time) along the route.
 - **3D.** Hazard view of any critical section, or a 3D cut-out of any rectangle. HiRISE/CTX/MOLA mosaic up to 4096 px, coloured by slope or textured with the real orbital photo, with a true-scale astronaut and rover.
 
 ### Crew and vehicles (Settings tab)
@@ -128,6 +130,7 @@ app/web/js/
   environment.js rover weather, RAD dose         thermal.js    THEMIS night-IR ground classes
   ui-extra.js   loading bar, legend, draggable panels
   media.js      public-domain NASA photos for the info pages (Wikimedia Commons)
+  tour.js       skippable step-by-step tutorial
 ```
 
 ## Limitations
