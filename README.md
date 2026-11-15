@@ -17,7 +17,7 @@ Every value in the app is labelled **measured** (NASA/USGS data), **derived/mode
 
 ## Live demo
 
-**[Open MARS Pathfinder](https://YOUR-GITHUB-NAME.github.io/MARS-Pathfinder/)** – runs in the browser, no installation.
+**[Open MARS Pathfinder](https://bananalul.github.io/MARS-Pathfinder/)** – runs in the browser, no installation. Source code: https://github.com/Bananalul/MARS-Pathfinder
 
 Quick start:
 1. Open **Settings**, choose *Astronaut on foot* or *Vehicle*, and click **Yes, apply**. Planning is blocked until a traveller is chosen.

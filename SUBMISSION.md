@@ -1,6 +1,8 @@
 # MARS Pathfinder – Marswalk Planner
 NASA Space Apps Challenge 2026 · Challenge: *Martian Map*
 
+**Live demo:** https://bananalul.github.io/MARS-Pathfinder/ · **Code:** https://github.com/Bananalul/MARS-Pathfinder · **Video:** (link)
+
 ---
 
 ## 1. Project summary
