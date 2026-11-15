@@ -1,0 +1,1278 @@
+{
+"levels": {
+"safe": {
+"label": "Safe",
+"label_de": "Sicher",
+"desc": "Measured directly, confirmed by several instruments or teams; scientific consensus.",
+"desc_de": "Direkt gemessen, von mehreren Instrumenten oder Teams bestätigt; wissenschaftlicher Konsens."
+},
+"maybe": {
+"label": "Maybe safe",
+"label_de": "Wahrscheinlich",
+"desc": "Well supported (often from orbit or by one method), but not confirmed on the ground or still debated.",
+"desc_de": "Gut gestützt (oft aus dem Orbit oder mit einer Methode), aber nicht am Boden bestätigt oder noch diskutiert."
+},
+"not": {
+"label": "Not safe",
+"label_de": "Unsicher",
+"desc": "Contested, not reproduced, or contradicted by later data.",
+"desc_de": "Umstritten, nicht reproduziert oder durch spätere Daten widersprochen."
+}
+},
+"entries": {
+"mission:Viking 1": {
+"title": "Viking 1 lander",
+"title_de": "Viking-1-Lander",
+"what": "First long-lived lander on Mars, in Chryse Planitia. Searched for life and measured soil, air and weather.",
+"what_de": "Erster langlebiger Lander auf dem Mars, in Chryse Planitia. Suchte nach Leben und maß Boden, Luft und Wetter.",
+"history": "Landed 20 July 1976, worked until November 1982. Its orbiter and that of Viking 2 mapped the whole planet.",
+"history_de": "Gelandet am 20. Juli 1976, aktiv bis November 1982. Sein Orbiter und der von Viking 2 kartierten den ganzen Planeten.",
+"interpretation": "The soil is iron-rich weathered basalt with strong oxidants. One biology experiment (Labeled Release) gave a positive signal; most scientists explain it by reactive soil chemistry, not life.",
+"interpretation_de": "Der Boden ist eisenreicher, verwitterter Basalt mit starken Oxidationsmitteln. Ein Biologie-Experiment (Labeled Release) gab ein positives Signal; die meisten Forschenden erklären es mit reaktiver Bodenchemie, nicht mit Leben.",
+"instruments": [
+"Cameras",
+"Gas chromatograph–mass spectrometer (GCMS)",
+"Labeled Release, Pyrolytic Release, Gas Exchange (biology)",
+"X-ray fluorescence spectrometer",
+"Meteorology boom",
+"Sampler arm, magnets"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Landing site, surface images and soil chemistry (Fe-rich, basaltic, oxidising).",
+"text_de": "Landestelle, Oberflächenbilder und Bodenchemie (eisenreich, basaltisch, oxidierend).",
+"why": "Direct measurements by several instruments on both landers.",
+"why_de": "Direkte Messungen mehrerer Instrumente auf beiden Landern."
+},
+{
+"conf": "maybe",
+"text": "No organic molecules in the soil.",
+"text_de": "Keine organischen Moleküle im Boden.",
+"why": "GCMS found none, but perchlorate (found 2008 by Phoenix) can destroy organics when samples are heated – the result is re-interpreted.",
+"why_de": "Das GCMS fand keine, aber Perchlorat (2008 von Phoenix entdeckt) kann organische Stoffe beim Erhitzen zerstören – das Ergebnis wird neu bewertet."
+},
+{
+"conf": "not",
+"text": "The Labeled Release signal shows life.",
+"text_de": "Das Labeled-Release-Signal zeigt Leben.",
+"why": "Not reproduced by the other experiments; non-biological oxidants explain it. Still argued by a minority.",
+"why_de": "Von den anderen Experimenten nicht bestätigt; nicht-biologische Oxidationsmittel erklären es. Wird nur von einer Minderheit vertreten."
+}
+],
+"sources": [
+"Klein (1978) Icarus 34",
+"Navarro-González et al. (2010) JGR 115",
+"NASA NSSDCA Viking 1 Lander"
+]
+},
+"mission:Viking 2": {
+"title": "Viking 2 lander",
+"title_de": "Viking-2-Lander",
+"what": "Second Viking lander, in Utopia Planitia at 48° N, farther north than Viking 1.",
+"what_de": "Zweiter Viking-Lander, in Utopia Planitia bei 48° N, nördlicher als Viking 1.",
+"history": "Landed 3 September 1976, worked until April 1980.",
+"history_de": "Gelandet am 3. September 1976, aktiv bis April 1980.",
+"interpretation": "Results matched Viking 1, showing that the soil chemistry is similar across the planet (wind mixes the dust). In winter it imaged a thin layer of frost on the ground.",
+"interpretation_de": "Die Ergebnisse glichen Viking 1 – die Bodenchemie ist planetenweit ähnlich (Wind mischt den Staub). Im Winter fotografierte er eine dünne Reifschicht am Boden.",
+"instruments": [
+"Cameras",
+"GCMS",
+"Biology experiments",
+"X-ray fluorescence spectrometer",
+"Seismometer",
+"Meteorology boom"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Winter frost on the surface.",
+"text_de": "Winterreif auf der Oberfläche.",
+"why": "Seen in lander images over several months.",
+"why_de": "Über Monate in Lander-Bildern beobachtet."
+},
+{
+"conf": "safe",
+"text": "Soil composition similar to Viking 1 site.",
+"text_de": "Bodenzusammensetzung ähnlich wie bei Viking 1.",
+"why": "Same instruments, 6500 km apart.",
+"why_de": "Gleiche Instrumente, 6500 km entfernt."
+},
+{
+"conf": "maybe",
+"text": "Very low seismic activity.",
+"text_de": "Sehr geringe seismische Aktivität.",
+"why": "The seismometer sat on the lander deck and mostly recorded wind; InSight later showed Mars is seismically active.",
+"why_de": "Das Seismometer stand auf dem Lander und maß vor allem Wind; InSight zeigte später, dass der Mars seismisch aktiv ist."
+}
+],
+"sources": [
+"Jones et al. (1979) Science 204",
+"Anderson et al. (1977) JGR 82",
+"NASA NSSDCA Viking 2 Lander"
+]
+},
+"mission:Mars Pathfinder / Sojourner": {
+"title": "Mars Pathfinder and Sojourner",
+"title_de": "Mars Pathfinder und Sojourner",
+"what": "Lander and the first Mars rover, at the mouth of the Ares Vallis flood channel.",
+"what_de": "Lander und erster Mars-Rover, an der Mündung des Flutkanals Ares Vallis.",
+"history": "Landed 4 July 1997 with airbags; the 10.6 kg rover drove about 100 m. Last contact 27 September 1997.",
+"history_de": "Gelandet am 4. Juli 1997 mit Airbags; der 10,6 kg schwere Rover fuhr etwa 100 m. Letzter Kontakt am 27. September 1997.",
+"interpretation": "Rounded pebbles and cobbles and possible conglomerates fit a site shaped by large floods. Some rocks looked silica-rich, possibly because of weathering coatings.",
+"interpretation_de": "Gerundete Kiesel und Gerölle sowie mögliche Konglomerate passen zu einem von großen Fluten geformten Ort. Manche Gesteine wirkten siliziumreich, vielleicht durch Verwitterungskrusten.",
+"instruments": [
+"Imager for Mars Pathfinder (IMP)",
+"Alpha Proton X-ray Spectrometer (APXS) on Sojourner",
+"Atmospheric structure / meteorology package (ASI/MET)",
+"Rover cameras"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Airbag landing and first rover drive on Mars.",
+"text_de": "Airbag-Landung und erste Roverfahrt auf dem Mars.",
+"why": "Mission record.",
+"why_de": "Missionsdaten."
+},
+{
+"conf": "safe",
+"text": "Dust devils passed over the lander.",
+"text_de": "Staubteufel zogen über den Lander.",
+"why": "Pressure drops and wind shifts in the weather data.",
+"why_de": "Druckabfälle und Windsprünge in den Wetterdaten."
+},
+{
+"conf": "maybe",
+"text": "Rounded stones were deposited by catastrophic floods.",
+"text_de": "Gerundete Steine wurden von katastrophalen Fluten abgelagert.",
+"why": "Consistent with orbital images of Ares Vallis, but other processes can round stones.",
+"why_de": "Passt zu Orbitalbildern von Ares Vallis, aber auch andere Prozesse runden Steine."
+},
+{
+"conf": "maybe",
+"text": "Andesite-like (silica-rich) rocks.",
+"text_de": "Andesit-artige (siliziumreiche) Gesteine.",
+"why": "Readings may be affected by dust and weathering rinds.",
+"why_de": "Messwerte können durch Staub und Verwitterungsrinden verfälscht sein."
+}
+],
+"sources": [
+"Golombek et al. (1997) Science 278",
+"Rieder et al. (1997) Science 278"
+]
+},
+"mission:Spirit": {
+"title": "Spirit rover (MER-A)",
+"title_de": "Rover Spirit (MER-A)",
+"what": "Rover in Gusev crater, chosen as a possible ancient lake bed.",
+"what_de": "Rover im Gusev-Krater, ausgewählt als möglicher alter Seeboden.",
+"history": "Landed 4 January 2004, drove about 7.7 km, got stuck in soft soil at “Troy” in 2009; last contact 22 March 2010.",
+"history_de": "Gelandet am 4. Januar 2004, fuhr etwa 7,7 km, blieb 2009 bei „Troy“ in weichem Boden stecken; letzter Kontakt am 22. März 2010.",
+"interpretation": "The plains were basalt with little sign of water. In the Columbia Hills, Spirit found rocks changed by water: nearly pure opaline silica near Home Plate (hot springs or steam vents) and carbonate in the Comanche outcrop.",
+"interpretation_de": "Die Ebene bestand aus kaum wasserveränderten Basalten. In den Columbia Hills fand Spirit wasserveränderte Gesteine: fast reines Opal-Silikat bei Home Plate (heiße Quellen oder Dampfaustritte) und Karbonat im Comanche-Aufschluss.",
+"instruments": [
+"Pancam, Navcam, Hazcam",
+"Miniature Thermal Emission Spectrometer (Mini-TES)",
+"Mössbauer spectrometer",
+"Alpha Particle X-ray Spectrometer (APXS)",
+"Microscopic Imager",
+"Rock Abrasion Tool (RAT)"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Silica-rich (≈90 % SiO₂) soil near Home Plate.",
+"text_de": "Siliziumreicher Boden (≈90 % SiO₂) bei Home Plate.",
+"why": "APXS and Mini-TES agree; exposed by a stuck wheel.",
+"why_de": "APXS und Mini-TES stimmen überein; von einem blockierten Rad freigelegt."
+},
+{
+"conf": "maybe",
+"text": "The silica formed in hot springs (possibly with microbial-like textures).",
+"text_de": "Das Silikat entstand in heißen Quellen (evtl. mit mikrobenähnlichen Strukturen).",
+"why": "Fumarole (steam vent) origin is also possible; textures alone are not a biosignature.",
+"why_de": "Auch Fumarolen sind möglich; Strukturen allein sind kein Lebensnachweis."
+},
+{
+"conf": "safe",
+"text": "Carbonate (16–34 wt %) in the Comanche outcrop.",
+"text_de": "Karbonat (16–34 Gew.-%) im Comanche-Aufschluss.",
+"why": "Three instruments agree (Morris et al. 2010).",
+"why_de": "Drei Instrumente stimmen überein (Morris et al. 2010)."
+},
+{
+"conf": "safe",
+"text": "Home Plate is a layered explosive volcanic deposit.",
+"text_de": "Home Plate ist eine geschichtete explosive Vulkanablagerung.",
+"why": "Bomb sag and layering seen at close range.",
+"why_de": "Bombeneinschlag und Schichtung aus nächster Nähe gesehen."
+}
+],
+"sources": [
+"Squyres et al. (2008) Science 320",
+"Morris et al. (2010) Science 329",
+"Ruff & Farmer (2016) Nat. Commun. 7"
+]
+},
+"mission:Opportunity": {
+"title": "Opportunity rover (MER-B)",
+"title_de": "Rover Opportunity (MER-B)",
+"what": "Rover at Meridiani Planum, chosen because orbiters saw the mineral hematite there.",
+"what_de": "Rover in Meridiani Planum, ausgewählt, weil Orbiter dort das Mineral Hämatit sahen.",
+"history": "Landed 25 January 2004 in Eagle crater, drove more than 45 km to Endeavour crater. Silent since the global dust storm of June 2018; mission ended 13 February 2019.",
+"history_de": "Gelandet am 25. Januar 2004 im Eagle-Krater, fuhr über 45 km bis zum Endeavour-Krater. Seit dem globalen Staubsturm im Juni 2018 still; Mission am 13. Februar 2019 beendet.",
+"interpretation": "Hematite spheres (“blueberries”), jarosite and cross-bedded sandstone show acidic groundwater and shallow surface water long ago. At Endeavour, a gypsum vein (“Homestake”) and clay-rich rock show later, less acidic water.",
+"interpretation_de": "Hämatitkügelchen („Blueberries“), Jarosit und schräggeschichteter Sandstein zeigen saures Grundwasser und flaches Oberflächenwasser vor langer Zeit. Am Endeavour zeigen eine Gipsader („Homestake“) und tonreiches Gestein späteres, weniger saures Wasser.",
+"instruments": [
+"Pancam, Navcam, Hazcam",
+"Mini-TES",
+"Mössbauer spectrometer",
+"APXS",
+"Microscopic Imager",
+"Rock Abrasion Tool"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Hematite concretions and the sulfate mineral jarosite.",
+"text_de": "Hämatit-Konkretionen und das Sulfatmineral Jarosit.",
+"why": "Mössbauer, APXS, Mini-TES and images agree.",
+"why_de": "Mössbauer, APXS, Mini-TES und Bilder stimmen überein."
+},
+{
+"conf": "safe",
+"text": "Gypsum vein deposited by water flowing through cracks (Homestake).",
+"text_de": "Gipsader, abgelagert von Wasser in Rissen (Homestake).",
+"why": "Calcium and sulfur measured directly in the vein.",
+"why_de": "Kalzium und Schwefel direkt in der Ader gemessen."
+},
+{
+"conf": "maybe",
+"text": "Water was standing or flowing at the surface (not only groundwater).",
+"text_de": "Wasser stand oder floss an der Oberfläche (nicht nur Grundwasser).",
+"why": "Cross-bedding supports it; wind-blown sand could explain some layers.",
+"why_de": "Schrägschichtung spricht dafür; vom Wind verwehter Sand könnte manche Schichten erklären."
+}
+],
+"sources": [
+"Squyres et al. (2004) Science 306",
+"Squyres et al. (2012) Science 336"
+]
+},
+"mission:Phoenix": {
+"title": "Phoenix lander",
+"title_de": "Phoenix-Lander",
+"what": "Lander in the northern plains (68° N) that dug into ice-rich ground.",
+"what_de": "Lander in den nördlichen Ebenen (68° N), der in eisreichen Boden grub.",
+"history": "Landed 25 May 2008, worked until early November 2008, when the polar winter ended it.",
+"history_de": "Gelandet am 25. Mai 2008, aktiv bis Anfang November 2008, als der Polarwinter die Mission beendete.",
+"interpretation": "Water ice lies a few centimetres below the surface. The soil is slightly alkaline and contains perchlorate, a salt that is toxic for humans but could be used for oxygen and as rocket fuel ingredient. Snow fell from clouds but evaporated before reaching the ground.",
+"interpretation_de": "Wassereis liegt wenige Zentimeter unter der Oberfläche. Der Boden ist leicht basisch und enthält Perchlorat, ein für Menschen giftiges Salz, aus dem man aber Sauerstoff gewinnen könnte. Schnee fiel aus Wolken, verdunstete aber vor dem Boden.",
+"instruments": [
+"Robotic Arm with scoop and camera",
+"Thermal and Evolved Gas Analyzer (TEGA)",
+"Microscopy, Electrochemistry and Conductivity Analyzer (MECA, Wet Chemistry Lab)",
+"Surface Stereo Imager",
+"Meteorological station with LIDAR"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Water ice just below the surface.",
+"text_de": "Wassereis knapp unter der Oberfläche.",
+"why": "Bright chunks in a trench sublimated over days; TEGA measured water.",
+"why_de": "Helle Brocken im Graben verschwanden über Tage; TEGA maß Wasser."
+},
+{
+"conf": "safe",
+"text": "Perchlorate (≈0.5–1 wt %) in the soil.",
+"text_de": "Perchlorat (≈0,5–1 Gew.-%) im Boden.",
+"why": "Wet Chemistry Lab; later confirmed by Curiosity.",
+"why_de": "Nasschemie-Labor; später von Curiosity bestätigt."
+},
+{
+"conf": "safe",
+"text": "Snow falling from clouds (virga).",
+"text_de": "Schnee fällt aus Wolken (Virga).",
+"why": "LIDAR profiles.",
+"why_de": "LIDAR-Profile."
+},
+{
+"conf": "not",
+"text": "Liquid brine droplets formed on the lander legs.",
+"text_de": "Flüssige Salzwassertropfen auf den Landebeinen.",
+"why": "Interpretation of images; other explanations not excluded.",
+"why_de": "Deutung von Bildern; andere Erklärungen nicht ausgeschlossen."
+}
+],
+"sources": [
+"Smith et al. (2009) Science 325",
+"Hecht et al. (2009) Science 325",
+"Whiteway et al. (2009) Science 325"
+]
+},
+"mission:Curiosity": {
+"title": "Curiosity rover (Mars Science Laboratory)",
+"title_de": "Rover Curiosity (Mars Science Laboratory)",
+"what": "Car-sized rover exploring Gale crater and climbing Mount Sharp (Aeolis Mons), a 5 km high stack of sediments.",
+"what_de": "Rover in Autogröße im Gale-Krater, der den Mount Sharp (Aeolis Mons) hinauffährt, einen 5 km hohen Sedimentstapel.",
+"history": "Landed 6 August 2012 at Bradbury Landing with the sky crane; still active.",
+"history_de": "Gelandet am 6. August 2012 bei Bradbury Landing mit dem Sky Crane; weiterhin aktiv.",
+"interpretation": "Gale held lakes for long periods about 3.5 billion years ago, with water that microbes could have lived in. The rocks contain organic molecules. Curiosity also measures the radiation and weather that astronauts would face.",
+"interpretation_de": "Gale enthielt vor etwa 3,5 Milliarden Jahren lange Zeit Seen, deren Wasser für Mikroben bewohnbar gewesen wäre. Die Gesteine enthalten organische Moleküle. Curiosity misst auch Strahlung und Wetter, denen Astronauten ausgesetzt wären.",
+"instruments": [
+"Sample Analysis at Mars (SAM)",
+"Chemistry and Mineralogy X-ray diffraction (CheMin)",
+"ChemCam laser spectrometer",
+"APXS",
+"Mastcam, MAHLI",
+"Radiation Assessment Detector (RAD)",
+"Rover Environmental Monitoring Station (REMS)",
+"Dynamic Albedo of Neutrons (DAN)"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "An ancient lake environment that was habitable (Yellowknife Bay mudstone).",
+"text_de": "Eine alte, bewohnbare Seeumgebung (Tonstein der Yellowknife Bay).",
+"why": "Drill samples analysed by CheMin and SAM: clays, neutral pH, chemical energy sources.",
+"why_de": "Bohrproben von CheMin und SAM: Tone, neutraler pH, chemische Energiequellen."
+},
+{
+"conf": "safe",
+"text": "Organic molecules preserved in 3-billion-year-old mudstone.",
+"text_de": "Organische Moleküle in 3 Milliarden Jahre altem Tonstein.",
+"why": "SAM, repeated samples (Eigenbrode et al. 2018).",
+"why_de": "SAM, wiederholte Proben (Eigenbrode et al. 2018)."
+},
+{
+"conf": "not",
+"text": "These organics come from life.",
+"text_de": "Diese organischen Stoffe stammen von Leben.",
+"why": "Non-biological sources (meteorites, chemistry) are equally possible.",
+"why_de": "Nicht-biologische Quellen (Meteoriten, Chemie) sind ebenso möglich."
+},
+{
+"conf": "not",
+"text": "Methane varies with the seasons and in spikes.",
+"text_de": "Methan schwankt mit den Jahreszeiten und in Spitzen.",
+"why": "Measured by SAM-TLS, but the ExoMars Trace Gas Orbiter finds none above it – unresolved.",
+"why_de": "Von SAM-TLS gemessen, aber der ExoMars Trace Gas Orbiter findet darüber keines – ungeklärt."
+},
+{
+"conf": "safe",
+"text": "Surface radiation dose ≈0.64 mSv per day.",
+"text_de": "Strahlendosis am Boden ≈0,64 mSv pro Tag.",
+"why": "RAD, continuous since 2012 (Hassler et al. 2014).",
+"why_de": "RAD, durchgehend seit 2012 (Hassler et al. 2014)."
+}
+],
+"sources": [
+"Grotzinger et al. (2014) Science 343",
+"Eigenbrode et al. (2018) Science 360",
+"Webster et al. (2018) Science 360",
+"Korablev et al. (2019) Nature 568",
+"Hassler et al. (2014) Science 343"
+]
+},
+"mission:InSight": {
+"title": "InSight lander",
+"title_de": "InSight-Lander",
+"what": "Geophysics lander in Elysium Planitia that listened to marsquakes to see inside the planet.",
+"what_de": "Geophysik-Lander in Elysium Planitia, der Marsbeben belauschte, um ins Innere zu sehen.",
+"history": "Landed 26 November 2018; dust on the solar panels ended the mission in December 2022.",
+"history_de": "Gelandet am 26. November 2018; Staub auf den Solarpanelen beendete die Mission im Dezember 2022.",
+"interpretation": "Mars is seismically active today, with many quakes from the Cerberus Fossae fault zone. Seismic waves revealed a layered crust, the mantle and a large liquid iron core. The heat probe could not dig in because the soil stuck together.",
+"interpretation_de": "Der Mars ist heute seismisch aktiv, viele Beben kommen aus der Störungszone Cerberus Fossae. Seismische Wellen zeigten eine geschichtete Kruste, den Mantel und einen großen flüssigen Eisenkern. Die Wärmesonde kam nicht in den Boden, weil er zusammenklebte.",
+"instruments": [
+"Seismic Experiment for Interior Structure (SEIS)",
+"Heat Flow and Physical Properties Package (HP³, the “mole”)",
+"Rotation and Interior Structure Experiment (RISE)",
+"Weather sensors (APSS/TWINS)",
+"Arm camera"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "More than 1300 marsquakes recorded.",
+"text_de": "Über 1300 Marsbeben aufgezeichnet.",
+"why": "SEIS catalogue.",
+"why_de": "SEIS-Katalog."
+},
+{
+"conf": "safe",
+"text": "Mars has a liquid metallic core.",
+"text_de": "Der Mars hat einen flüssigen Metallkern.",
+"why": "Seismic waves reflected from the core.",
+"why_de": "An der Kerngrenze reflektierte Wellen."
+},
+{
+"conf": "maybe",
+"text": "Exact core radius (≈1650–1830 km).",
+"text_de": "Genauer Kernradius (≈1650–1830 km).",
+"why": "Revised after a molten layer above the core was proposed (2023).",
+"why_de": "Nach dem Vorschlag einer geschmolzenen Schicht über dem Kern (2023) korrigiert."
+},
+{
+"conf": "safe",
+"text": "The heat probe failed to penetrate the cohesive soil.",
+"text_de": "Die Wärmesonde drang nicht in den verbackenen Boden ein.",
+"why": "Mission record – important for drilling and building on Mars.",
+"why_de": "Missionsdaten – wichtig für Bohren und Bauen auf dem Mars."
+}
+],
+"sources": [
+"Stähler et al. (2021) Science 373",
+"Khan et al. (2023) Nature 622",
+"Banerdt et al. (2020) Nat. Geosci. 13"
+]
+},
+"mission:Perseverance": {
+"title": "Perseverance rover (Mars 2020) and Ingenuity",
+"title_de": "Rover Perseverance (Mars 2020) und Ingenuity",
+"what": "Rover in Jezero crater, which once held a lake fed by a river delta. It collects rock samples for a possible return to Earth.",
+"what_de": "Rover im Jezero-Krater, der einst einen See mit Flussdelta enthielt. Er sammelt Gesteinsproben für eine mögliche Rückholung zur Erde.",
+"history": "Landed 18 February 2021; still active. The Ingenuity helicopter made 72 flights until January 2024. MOXIE made oxygen from Martian air.",
+"history_de": "Gelandet am 18. Februar 2021; weiterhin aktiv. Der Hubschrauber Ingenuity flog 72-mal bis Januar 2024. MOXIE erzeugte Sauerstoff aus Marsluft.",
+"interpretation": "The crater floor is volcanic rock later changed by water; the delta is made of river sediments. The rock “Cheyava Falls” has spots that on Earth are often made by microbes – a possible, not proven, sign of life.",
+"interpretation_de": "Der Kraterboden ist Vulkangestein, später durch Wasser verändert; das Delta besteht aus Flusssedimenten. Das Gestein „Cheyava Falls“ hat Flecken, die auf der Erde oft von Mikroben stammen – ein mögliches, nicht bewiesenes Lebenszeichen.",
+"instruments": [
+"SHERLOC (UV Raman, organics)",
+"PIXL (X-ray chemistry)",
+"SuperCam (laser, Raman, IR)",
+"Mastcam-Z",
+"RIMFAX ground radar",
+"MEDA weather station",
+"MOXIE oxygen experiment",
+"Ingenuity helicopter",
+"Sample caching system"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Jezero once held a lake with a river delta.",
+"text_de": "Jezero enthielt einst einen See mit Flussdelta.",
+"why": "Delta layers seen from orbit and by RIMFAX and cameras on the ground.",
+"why_de": "Deltaschichten aus dem Orbit sowie mit RIMFAX und Kameras am Boden gesehen."
+},
+{
+"conf": "safe",
+"text": "MOXIE produced 122 g of oxygen from CO₂ in 16 runs.",
+"text_de": "MOXIE erzeugte in 16 Läufen 122 g Sauerstoff aus CO₂.",
+"why": "Measured product purity ≥98 %.",
+"why_de": "Gemessene Reinheit ≥98 %."
+},
+{
+"conf": "safe",
+"text": "Powered flight in the thin Martian air is possible (Ingenuity).",
+"text_de": "Motorflug in der dünnen Marsluft ist möglich (Ingenuity).",
+"why": "72 flights.",
+"why_de": "72 Flüge."
+},
+{
+"conf": "not",
+"text": "The “leopard spots” at Cheyava Falls were made by microbes.",
+"text_de": "Die „Leopardenflecken“ bei Cheyava Falls stammen von Mikroben.",
+"why": "A potential biosignature; only lab analysis of returned samples can decide.",
+"why_de": "Eine mögliche Biosignatur; nur Laboranalyse zurückgebrachter Proben kann entscheiden."
+}
+],
+"sources": [
+"Mangold et al. (2021) Science 374",
+"Hoffman et al. (2022) Science Advances 8",
+"Hurowitz et al. (2025) Nature 645"
+]
+},
+"major:Valles Marineris": {
+"title": "Valles Marineris",
+"title_de": "Valles Marineris",
+"what": "Canyon system about 4000 km long and up to about 7 km deep, east of the Tharsis volcanoes.",
+"what_de": "Canyonsystem, etwa 4000 km lang und bis etwa 7 km tief, östlich der Tharsis-Vulkane.",
+"history": "Discovered in 1971–72 by Mariner 9 and named after it. Mapped in detail by Viking, MOLA, HRSC, CTX and HiRISE.",
+"history_de": "1971–72 von Mariner 9 entdeckt und danach benannt. Später detailliert kartiert von Viking, MOLA, HRSC, CTX und HiRISE.",
+"interpretation": "It formed mainly by the crust stretching and cracking as the Tharsis bulge grew, then widened by landslides and erosion. Layered deposits inside contain sulfates, so water was involved later.",
+"interpretation_de": "Es entstand vor allem durch Dehnung und Bruch der Kruste, als die Tharsis-Aufwölbung wuchs, und wurde durch Erdrutsche und Erosion erweitert. Geschichtete Ablagerungen darin enthalten Sulfate – später war also Wasser beteiligt.",
+"instruments": [
+"Mariner 9",
+"Viking orbiters",
+"MOLA laser altimeter",
+"THEMIS",
+"HRSC",
+"CTX / HiRISE",
+"CRISM / OMEGA spectrometers"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Size and depth.",
+"text_de": "Größe und Tiefe.",
+"why": "MOLA elevation data.",
+"why_de": "MOLA-Höhendaten."
+},
+{
+"conf": "maybe",
+"text": "Origin by tectonic rifting plus collapse.",
+"text_de": "Entstehung durch tektonische Grabenbildung plus Einsturz.",
+"why": "Widely accepted, details (role of water, subsurface collapse) debated.",
+"why_de": "Weithin akzeptiert, Details (Rolle von Wasser, Einsturz) umstritten."
+},
+{
+"conf": "maybe",
+"text": "Sulfate-rich interior layered deposits.",
+"text_de": "Sulfatreiche geschichtete Ablagerungen im Inneren.",
+"why": "Orbital spectra; no ground truth.",
+"why_de": "Orbitalspektren; keine Bodenbestätigung."
+}
+],
+"sources": [
+"Lucchitta et al. (1992) in Mars, Univ. Arizona Press",
+"Bibring et al. (2006) Science 312"
+]
+},
+"major:Tharsis Volcanic Region": {
+"title": "Tharsis volcanic region",
+"title_de": "Vulkanregion Tharsis",
+"what": "A volcanic plateau about 5000 km across and up to about 10 km high, with the giant volcanoes Arsia, Pavonis and Ascraeus Mons.",
+"what_de": "Ein Vulkanplateau mit etwa 5000 km Durchmesser und bis zu etwa 10 km Höhe, mit den Riesenvulkanen Arsia, Pavonis und Ascraeus Mons.",
+"history": "Seen by Mariner 9 (1971); shape measured precisely by MOLA (1997–2006).",
+"history_de": "Von Mariner 9 (1971) gesehen; Form präzise von MOLA (1997–2006) vermessen.",
+"interpretation": "Volcanism here lasted billions of years. The enormous load bent the crust of the whole planet and may have shifted the spin axis.",
+"interpretation_de": "Der Vulkanismus dauerte hier Milliarden Jahre. Die enorme Last verbog die Kruste des ganzen Planeten und hat vielleicht die Rotationsachse verschoben.",
+"instruments": [
+"Mariner 9",
+"Viking orbiters",
+"MOLA",
+"Mars Global Surveyor radio science (gravity)",
+"HRSC",
+"CTX"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Size, height, volcanoes.",
+"text_de": "Größe, Höhe, Vulkane.",
+"why": "Topography and imaging.",
+"why_de": "Topographie und Bilder."
+},
+{
+"conf": "maybe",
+"text": "Tharsis load caused true polar wander.",
+"text_de": "Die Tharsis-Last verursachte eine Polwanderung.",
+"why": "Supported by models and valley-network patterns, not directly measurable.",
+"why_de": "Durch Modelle und Talnetz-Muster gestützt, nicht direkt messbar."
+}
+],
+"sources": [
+"Phillips et al. (2001) Science 291",
+"Bouley et al. (2016) Nature 531"
+]
+},
+"major:Olympus Mons": {
+"title": "Olympus Mons",
+"title_de": "Olympus Mons",
+"what": "The largest known volcano in the Solar System: about 22 km above the Mars datum and about 600 km wide.",
+"what_de": "Der größte bekannte Vulkan im Sonnensystem: etwa 22 km über dem Mars-Nullniveau und etwa 600 km breit.",
+"history": "Seen as a bright spot (“Nix Olympica”) from Earth; recognised as a volcano by Mariner 9 in 1971.",
+"history_de": "Von der Erde als heller Fleck („Nix Olympica“) gesehen; 1971 von Mariner 9 als Vulkan erkannt.",
+"interpretation": "A shield volcano built from many fluid lava flows, surrounded by a cliff up to several km high. Some flows are geologically young.",
+"interpretation_de": "Ein Schildvulkan aus vielen dünnflüssigen Lavaströmen, umgeben von einer bis zu mehreren km hohen Steilstufe. Manche Ströme sind geologisch jung.",
+"instruments": [
+"Mariner 9",
+"Viking orbiters",
+"MOLA",
+"HRSC",
+"CTX / HiRISE"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Height and size.",
+"text_de": "Höhe und Größe.",
+"why": "MOLA.",
+"why_de": "MOLA."
+},
+{
+"conf": "maybe",
+"text": "Youngest lava flows only a few to tens of millions of years old.",
+"text_de": "Jüngste Lavaströme nur wenige bis einige zehn Millionen Jahre alt.",
+"why": "Crater counting has large uncertainties.",
+"why_de": "Kraterzählung hat große Unsicherheiten."
+}
+],
+"sources": [
+"Smith et al. (2001) JGR 106",
+"Neukum et al. (2004) Nature 432"
+]
+},
+"major:Alba Mons": {
+"title": "Alba Mons",
+"title_de": "Alba Mons",
+"what": "A huge but very flat volcano north of Tharsis, covering more area than any other volcano on Mars.",
+"what_de": "Ein riesiger, aber sehr flacher Vulkan nördlich von Tharsis mit der größten Fläche aller Marsvulkane.",
+"history": "Identified in Mariner 9 and Viking images; its low slopes were measured by MOLA.",
+"history_de": "In Mariner-9- und Viking-Bildern erkannt; die flachen Hänge wurden von MOLA gemessen.",
+"interpretation": "Long, thin lava flows and a ring of faults show very fluid lava and stress from Tharsis.",
+"interpretation_de": "Lange, dünne Lavaströme und ein Ring aus Brüchen zeigen sehr flüssige Lava und Spannungen durch Tharsis.",
+"instruments": [
+"Mariner 9",
+"Viking orbiters",
+"MOLA",
+"THEMIS",
+"CTX"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Shape and very low slopes (< 1° on average).",
+"text_de": "Form und sehr flache Hänge (im Mittel < 1°).",
+"why": "MOLA.",
+"why_de": "MOLA."
+},
+{
+"conf": "maybe",
+"text": "Formed mainly by effusive lava.",
+"text_de": "Hauptsächlich durch ausfließende Lava entstanden.",
+"why": "Some volcanic ash may be involved.",
+"why_de": "Vulkanasche könnte beteiligt sein."
+}
+],
+"sources": [
+"Ivanov & Head (2006) JGR 111"
+]
+},
+"major:Kasei Valles": {
+"title": "Kasei Valles",
+"title_de": "Kasei Valles",
+"what": "Kasei Valles is an outflow channel: a very wide valley carved by sudden, enormous floods.",
+"what_de": "Kasei Valles ist ein Ausflusskanal: ein sehr breites Tal, das von plötzlichen, enormen Fluten ausgehoben wurde.",
+"history": "Outflow channels were discovered by Mariner 9 (1971–72) and studied by Viking, MOLA, THEMIS, HRSC and CTX.",
+"history_de": "Ausflusskanäle wurden von Mariner 9 (1971–72) entdeckt und mit Viking, MOLA, THEMIS, HRSC und CTX untersucht.",
+"interpretation": "Streamlined islands, scoured floors and huge widths point to floods released from underground water, probably about 3 billion years ago. Lava or ice flows have been proposed for some channels.",
+"interpretation_de": "Stromlinienförmige Inseln, ausgeschürfte Böden und enorme Breiten deuten auf Fluten aus unterirdischem Wasser hin, vermutlich vor etwa 3 Milliarden Jahren. Für manche Kanäle wurden Lava- oder Eisströme vorgeschlagen.",
+"instruments": [
+"Mariner 9",
+"Viking orbiters",
+"MOLA",
+"THEMIS",
+"HRSC",
+"CTX"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Channel shape and size.",
+"text_de": "Form und Größe des Kanals.",
+"why": "Images and topography.",
+"why_de": "Bilder und Topographie."
+},
+{
+"conf": "maybe",
+"text": "Carved by catastrophic water floods.",
+"text_de": "Von katastrophalen Wasserfluten ausgehoben.",
+"why": "Favoured interpretation; lava erosion is an alternative for some channels.",
+"why_de": "Bevorzugte Deutung; Lava-Erosion ist für manche Kanäle eine Alternative."
+}
+],
+"sources": [
+"Baker & Milton (1974) Icarus 23",
+"Carr (1996) Water on Mars"
+]
+},
+"major:Shalbatana Vallis": {
+"title": "Shalbatana Vallis",
+"title_de": "Shalbatana Vallis",
+"what": "Shalbatana Vallis is an outflow channel: a very wide valley carved by sudden, enormous floods.",
+"what_de": "Shalbatana Vallis ist ein Ausflusskanal: ein sehr breites Tal, das von plötzlichen, enormen Fluten ausgehoben wurde.",
+"history": "Outflow channels were discovered by Mariner 9 (1971–72) and studied by Viking, MOLA, THEMIS, HRSC and CTX.",
+"history_de": "Ausflusskanäle wurden von Mariner 9 (1971–72) entdeckt und mit Viking, MOLA, THEMIS, HRSC und CTX untersucht.",
+"interpretation": "Streamlined islands, scoured floors and huge widths point to floods released from underground water, probably about 3 billion years ago. Lava or ice flows have been proposed for some channels.",
+"interpretation_de": "Stromlinienförmige Inseln, ausgeschürfte Böden und enorme Breiten deuten auf Fluten aus unterirdischem Wasser hin, vermutlich vor etwa 3 Milliarden Jahren. Für manche Kanäle wurden Lava- oder Eisströme vorgeschlagen.",
+"instruments": [
+"Mariner 9",
+"Viking orbiters",
+"MOLA",
+"THEMIS",
+"HRSC",
+"CTX"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Channel shape and size.",
+"text_de": "Form und Größe des Kanals.",
+"why": "Images and topography.",
+"why_de": "Bilder und Topographie."
+},
+{
+"conf": "maybe",
+"text": "Carved by catastrophic water floods.",
+"text_de": "Von katastrophalen Wasserfluten ausgehoben.",
+"why": "Favoured interpretation; lava erosion is an alternative for some channels.",
+"why_de": "Bevorzugte Deutung; Lava-Erosion ist für manche Kanäle eine Alternative."
+}
+],
+"sources": [
+"Baker & Milton (1974) Icarus 23",
+"Carr (1996) Water on Mars"
+]
+},
+"major:Ares Vallis": {
+"title": "Ares Vallis",
+"title_de": "Ares Vallis",
+"what": "Ares Vallis is an outflow channel: a very wide valley carved by sudden, enormous floods.",
+"what_de": "Ares Vallis ist ein Ausflusskanal: ein sehr breites Tal, das von plötzlichen, enormen Fluten ausgehoben wurde.",
+"history": "Outflow channels were discovered by Mariner 9 (1971–72) and studied by Viking, MOLA, THEMIS, HRSC and CTX. Mars Pathfinder landed at the mouth of Ares Vallis in 1997.",
+"history_de": "Ausflusskanäle wurden von Mariner 9 (1971–72) entdeckt und mit Viking, MOLA, THEMIS, HRSC und CTX untersucht. Mars Pathfinder landete 1997 an der Mündung von Ares Vallis.",
+"interpretation": "Streamlined islands, scoured floors and huge widths point to floods released from underground water, probably about 3 billion years ago. Lava or ice flows have been proposed for some channels.",
+"interpretation_de": "Stromlinienförmige Inseln, ausgeschürfte Böden und enorme Breiten deuten auf Fluten aus unterirdischem Wasser hin, vermutlich vor etwa 3 Milliarden Jahren. Für manche Kanäle wurden Lava- oder Eisströme vorgeschlagen.",
+"instruments": [
+"Mariner 9",
+"Viking orbiters",
+"MOLA",
+"THEMIS",
+"HRSC",
+"CTX",
+"Mars Pathfinder"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Channel shape and size.",
+"text_de": "Form und Größe des Kanals.",
+"why": "Images and topography.",
+"why_de": "Bilder und Topographie."
+},
+{
+"conf": "maybe",
+"text": "Carved by catastrophic water floods.",
+"text_de": "Von katastrophalen Wasserfluten ausgehoben.",
+"why": "Favoured interpretation; lava erosion is an alternative for some channels.",
+"why_de": "Bevorzugte Deutung; Lava-Erosion ist für manche Kanäle eine Alternative."
+}
+],
+"sources": [
+"Baker & Milton (1974) Icarus 23",
+"Carr (1996) Water on Mars"
+]
+},
+"major:Elysium Volcanic Region": {
+"title": "Elysium volcanic region",
+"title_de": "Vulkanregion Elysium",
+"what": "The second-largest volcanic region, with Elysium Mons and the Cerberus Fossae fractures.",
+"what_de": "Die zweitgrößte Vulkanregion, mit Elysium Mons und den Cerberus-Fossae-Brüchen.",
+"history": "Mapped since Mariner 9; InSight landed nearby in 2018.",
+"history_de": "Seit Mariner 9 kartiert; InSight landete 2018 in der Nähe.",
+"interpretation": "Cerberus Fossae is one of the youngest volcanic and tectonic areas on Mars. InSight located many marsquakes there, so it is still active.",
+"interpretation_de": "Cerberus Fossae gehört zu den jüngsten vulkanischen und tektonischen Gebieten des Mars. InSight ortete dort viele Marsbeben – es ist also noch aktiv.",
+"instruments": [
+"Mariner 9",
+"Viking orbiters",
+"MOLA",
+"HRSC",
+"CTX / HiRISE",
+"InSight SEIS"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Marsquakes originate at Cerberus Fossae.",
+"text_de": "Marsbeben entstehen bei Cerberus Fossae.",
+"why": "InSight seismic locations.",
+"why_de": "Ortung durch InSight."
+},
+{
+"conf": "maybe",
+"text": "Volcanic activity within the last few million years.",
+"text_de": "Vulkanische Aktivität in den letzten Millionen Jahren.",
+"why": "Young surfaces from crater counts; a 2021 study proposed eruptions ~50 000 years ago.",
+"why_de": "Junge Flächen nach Kraterzählung; eine Studie von 2021 schlug Ausbrüche vor ~50 000 Jahren vor."
+}
+],
+"sources": [
+"Giardini et al. (2020) Nat. Geosci. 13",
+"Horvath et al. (2021) Icarus 365"
+]
+},
+"ez": {
+"title": "Human Exploration Zones (NASA 2015)",
+"title_de": "Erkundungszonen für Menschen (NASA 2015)",
+"what": "Candidate areas of 100 km radius where a first human crew could land and work, proposed by scientists and engineers.",
+"what_de": "Kandidatengebiete mit 100 km Radius, in denen eine erste Crew landen und arbeiten könnte, vorgeschlagen von Wissenschaft und Technik.",
+"history": "Presented at NASA's First Landing Site / Exploration Zone Workshop for Human Missions to the Surface of Mars, Houston, October 2015.",
+"history_de": "Vorgestellt beim ersten NASA-Workshop zu Landestellen und Erkundungszonen für bemannte Marsmissionen, Houston, Oktober 2015.",
+"interpretation": "Each zone should combine science targets with resources: water ice or hydrated minerals for water, flat ground for landing and building, and a latitude that is not too cold.",
+"interpretation_de": "Jede Zone soll Forschungsziele mit Ressourcen verbinden: Wassereis oder wasserhaltige Minerale, ebener Boden zum Landen und Bauen und eine nicht zu kalte Breite.",
+"instruments": [
+"Orbital data used by proposers: MOLA, THEMIS, CTX, HiRISE, CRISM, SHARAD radar, Mars Odyssey neutron spectrometer"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "The zones were proposed at the workshop.",
+"text_de": "Die Zonen wurden beim Workshop vorgeschlagen.",
+"why": "Published abstracts (LPI).",
+"why_de": "Veröffentlichte Abstracts (LPI)."
+},
+{
+"conf": "maybe",
+"text": "The resources listed for a zone are available.",
+"text_de": "Die für eine Zone genannten Ressourcen sind vorhanden.",
+"why": "Mostly orbital evidence; amounts and accessibility unknown.",
+"why_de": "Meist Orbitaldaten; Mengen und Zugänglichkeit unbekannt."
+},
+{
+"conf": "maybe",
+"text": "A zone will be chosen for a human landing.",
+"text_de": "Eine Zone wird für eine Landung ausgewählt.",
+"why": "No site has been selected.",
+"why_de": "Es wurde noch keine Stelle ausgewählt."
+}
+],
+"sources": [
+"NASA (2015) First Landing Site/Exploration Zone Workshop, LPI Contribution 1879"
+]
+},
+"aq:phyllosilicate": {
+"title": "Clay minerals (phyllosilicates) – orbital detection",
+"title_de": "Tonminerale (Schichtsilikate) – Nachweis aus dem Orbit",
+"what": "A spot where orbital spectrometers detected clay minerals (phyllosilicates) in the surface.",
+"what_de": "Eine Stelle, an der Orbit-Spektrometer Tonminerale (Schichtsilikate) in der Oberfläche nachgewiesen haben.",
+"history": "Compiled by Ehlmann & Edwards (2014) from CRISM (MRO, since 2006), OMEGA (Mars Express, since 2004) and THEMIS (Mars Odyssey) data.",
+"history_de": "Zusammengestellt von Ehlmann & Edwards (2014) aus Daten von CRISM (MRO, seit 2006), OMEGA (Mars Express, seit 2004) und THEMIS (Mars Odyssey).",
+"interpretation": "Fe/Mg- and Al-clays form when water alters rock for a long time at roughly neutral pH – the most promising conditions for life. Mostly in very old (Noachian) terrain.",
+"interpretation_de": "Fe/Mg- und Al-Tone entstehen, wenn Wasser Gestein lange bei etwa neutralem pH verändert – die günstigsten Bedingungen für Leben. Meist in sehr altem (noachischem) Gelände.",
+"instruments": [
+"CRISM (MRO)",
+"OMEGA (Mars Express)",
+"THEMIS (Mars Odyssey)"
+],
+"claims": [
+{
+"conf": "maybe",
+"text": "Clay minerals (phyllosilicates) are present at this spot.",
+"text_de": "Tonminerale (Schichtsilikate) sind an dieser Stelle vorhanden.",
+"why": "Spectral detection from orbit (pixels 18–2000 m); identification is good but not confirmed on the ground here.",
+"why_de": "Spektraler Nachweis aus dem Orbit (Pixel 18–2000 m); gute Bestimmung, hier aber nicht am Boden bestätigt."
+},
+{
+"conf": "safe",
+"text": "Clay minerals (phyllosilicates) exist on Mars.",
+"text_de": "Tonminerale (Schichtsilikate) gibt es auf dem Mars.",
+"why": "Curiosity (CheMin) and Opportunity measured clays on the ground.",
+"why_de": "Curiosity (CheMin) und Opportunity maßen Tone am Boden."
+}
+],
+"sources": [
+"Ehlmann & Edwards (2014) Annu. Rev. Earth Planet. Sci. 42",
+"Bibring et al. (2006) Science 312"
+]
+},
+"aq:sulfate": {
+"title": "Sulfates – orbital detection",
+"title_de": "Sulfate – Nachweis aus dem Orbit",
+"what": "A spot where orbital spectrometers detected sulfates in the surface.",
+"what_de": "Eine Stelle, an der Orbit-Spektrometer Sulfate in der Oberfläche nachgewiesen haben.",
+"history": "Compiled by Ehlmann & Edwards (2014) from CRISM (MRO, since 2006), OMEGA (Mars Express, since 2004) and THEMIS (Mars Odyssey) data.",
+"history_de": "Zusammengestellt von Ehlmann & Edwards (2014) aus Daten von CRISM (MRO, seit 2006), OMEGA (Mars Express, seit 2004) und THEMIS (Mars Odyssey).",
+"interpretation": "Sulfates (e.g. gypsum, kieserite, jarosite) form when salty, often acidic water evaporates. They mark a later, drier era.",
+"interpretation_de": "Sulfate (z. B. Gips, Kieserit, Jarosit) entstehen, wenn salziges, oft saures Wasser verdunstet. Sie markieren eine spätere, trockenere Zeit.",
+"instruments": [
+"CRISM (MRO)",
+"OMEGA (Mars Express)",
+"THEMIS (Mars Odyssey)"
+],
+"claims": [
+{
+"conf": "maybe",
+"text": "Sulfates are present at this spot.",
+"text_de": "Sulfate sind an dieser Stelle vorhanden.",
+"why": "Spectral detection from orbit (pixels 18–2000 m); identification is good but not confirmed on the ground here.",
+"why_de": "Spektraler Nachweis aus dem Orbit (Pixel 18–2000 m); gute Bestimmung, hier aber nicht am Boden bestätigt."
+},
+{
+"conf": "safe",
+"text": "Sulfates exist on Mars.",
+"text_de": "Sulfate gibt es auf dem Mars.",
+"why": "Opportunity and Curiosity found sulfates on the ground.",
+"why_de": "Opportunity und Curiosity fanden Sulfate am Boden."
+}
+],
+"sources": [
+"Ehlmann & Edwards (2014) Annu. Rev. Earth Planet. Sci. 42",
+"Bibring et al. (2006) Science 312"
+]
+},
+"aq:silica": {
+"title": "Hydrated silica (opal) – orbital detection",
+"title_de": "Wasserhaltiges Silikat (Opal) – Nachweis aus dem Orbit",
+"what": "A spot where orbital spectrometers detected hydrated silica (opal) in the surface.",
+"what_de": "Eine Stelle, an der Orbit-Spektrometer Wasserhaltiges Silikat (Opal) in der Oberfläche nachgewiesen haben.",
+"history": "Compiled by Ehlmann & Edwards (2014) from CRISM (MRO, since 2006), OMEGA (Mars Express, since 2004) and THEMIS (Mars Odyssey) data.",
+"history_de": "Zusammengestellt von Ehlmann & Edwards (2014) aus Daten von CRISM (MRO, seit 2006), OMEGA (Mars Express, seit 2004) und THEMIS (Mars Odyssey).",
+"interpretation": "Opaline silica forms in hot springs, steam vents or by leaching of rocks by water.",
+"interpretation_de": "Opal-Silikat entsteht in heißen Quellen, an Dampfaustritten oder durch Auslaugen von Gestein durch Wasser.",
+"instruments": [
+"CRISM (MRO)",
+"OMEGA (Mars Express)",
+"THEMIS (Mars Odyssey)"
+],
+"claims": [
+{
+"conf": "maybe",
+"text": "Hydrated silica (opal) are present at this spot.",
+"text_de": "Wasserhaltiges Silikat (Opal) sind an dieser Stelle vorhanden.",
+"why": "Spectral detection from orbit (pixels 18–2000 m); identification is good but not confirmed on the ground here.",
+"why_de": "Spektraler Nachweis aus dem Orbit (Pixel 18–2000 m); gute Bestimmung, hier aber nicht am Boden bestätigt."
+},
+{
+"conf": "safe",
+"text": "Hydrated silica (opal) exist on Mars.",
+"text_de": "Wasserhaltiges Silikat (Opal) gibt es auf dem Mars.",
+"why": "Spirit found ≈90 % silica near Home Plate.",
+"why_de": "Spirit fand ≈90 % Silikat bei Home Plate."
+}
+],
+"sources": [
+"Ehlmann & Edwards (2014) Annu. Rev. Earth Planet. Sci. 42",
+"Bibring et al. (2006) Science 312"
+]
+},
+"aq:carbonate": {
+"title": "Carbonates – orbital detection",
+"title_de": "Karbonate – Nachweis aus dem Orbit",
+"what": "A spot where orbital spectrometers detected carbonates in the surface.",
+"what_de": "Eine Stelle, an der Orbit-Spektrometer Karbonate in der Oberfläche nachgewiesen haben.",
+"history": "Compiled by Ehlmann & Edwards (2014) from CRISM (MRO, since 2006), OMEGA (Mars Express, since 2004) and THEMIS (Mars Odyssey) data.",
+"history_de": "Zusammengestellt von Ehlmann & Edwards (2014) aus Daten von CRISM (MRO, seit 2006), OMEGA (Mars Express, seit 2004) und THEMIS (Mars Odyssey).",
+"interpretation": "Carbonates form from CO₂ and water and could store part of the lost early atmosphere. Rare on Mars.",
+"interpretation_de": "Karbonate entstehen aus CO₂ und Wasser und könnten einen Teil der verlorenen frühen Atmosphäre speichern. Auf dem Mars selten.",
+"instruments": [
+"CRISM (MRO)",
+"OMEGA (Mars Express)",
+"THEMIS (Mars Odyssey)"
+],
+"claims": [
+{
+"conf": "maybe",
+"text": "Carbonates are present at this spot.",
+"text_de": "Karbonate sind an dieser Stelle vorhanden.",
+"why": "Spectral detection from orbit (pixels 18–2000 m); identification is good but not confirmed on the ground here.",
+"why_de": "Spektraler Nachweis aus dem Orbit (Pixel 18–2000 m); gute Bestimmung, hier aber nicht am Boden bestätigt."
+},
+{
+"conf": "safe",
+"text": "Carbonates exist on Mars.",
+"text_de": "Karbonate gibt es auf dem Mars.",
+"why": "Spirit (Comanche) and Perseverance (Jezero) found carbonates.",
+"why_de": "Spirit (Comanche) und Perseverance (Jezero) fanden Karbonate."
+}
+],
+"sources": [
+"Ehlmann & Edwards (2014) Annu. Rev. Earth Planet. Sci. 42",
+"Bibring et al. (2006) Science 312"
+]
+},
+"aq:chloride": {
+"title": "Chlorides (salt) – orbital detection",
+"title_de": "Chloride (Salz) – Nachweis aus dem Orbit",
+"what": "A spot where orbital spectrometers detected chlorides (salt) in the surface.",
+"what_de": "Eine Stelle, an der Orbit-Spektrometer Chloride (Salz) in der Oberfläche nachgewiesen haben.",
+"history": "Compiled by Ehlmann & Edwards (2014) from CRISM (MRO, since 2006), OMEGA (Mars Express, since 2004) and THEMIS (Mars Odyssey) data.",
+"history_de": "Zusammengestellt von Ehlmann & Edwards (2014) aus Daten von CRISM (MRO, seit 2006), OMEGA (Mars Express, seit 2004) und THEMIS (Mars Odyssey).",
+"interpretation": "Chloride salts are left behind when lakes or ponds evaporate – the last water at a place.",
+"interpretation_de": "Chloridsalze bleiben zurück, wenn Seen oder Tümpel verdunsten – das letzte Wasser an einem Ort.",
+"instruments": [
+"CRISM (MRO)",
+"OMEGA (Mars Express)",
+"THEMIS (Mars Odyssey)"
+],
+"claims": [
+{
+"conf": "maybe",
+"text": "Chlorides (salt) are present at this spot.",
+"text_de": "Chloride (Salz) sind an dieser Stelle vorhanden.",
+"why": "Spectral detection from orbit (pixels 18–2000 m); identification is good but not confirmed on the ground here.",
+"why_de": "Spektraler Nachweis aus dem Orbit (Pixel 18–2000 m); gute Bestimmung, hier aber nicht am Boden bestätigt."
+},
+{
+"conf": "maybe",
+"text": "Chlorides exist on Mars as deposits.",
+"text_de": "Chloride gibt es auf dem Mars als Ablagerungen.",
+"why": "Phoenix and Curiosity found chlorine salts in soil, but no chloride deposit has been visited.",
+"why_de": "Phoenix und Curiosity fanden Chlorsalze im Boden, aber noch keine Chlorid-Ablagerung wurde besucht."
+}
+],
+"sources": [
+"Ehlmann & Edwards (2014) Annu. Rev. Earth Planet. Sci. 42",
+"Bibring et al. (2006) Science 312"
+]
+},
+"hydrous": {
+"title": "Hydrous mineral detection (CRISM/OMEGA)",
+"title_de": "Wasserhaltige Minerale (CRISM/OMEGA)",
+"what": "A spot where infrared spectra show minerals that contain water or hydroxyl in their structure.",
+"what_de": "Eine Stelle, an der Infrarotspektren Minerale mit Wasser oder Hydroxyl im Kristallgitter zeigen.",
+"history": "Global survey by Carter et al. (2013) of about 1000 sites from CRISM and OMEGA data.",
+"history_de": "Globale Übersicht von Carter et al. (2013) über etwa 1000 Stellen aus CRISM- und OMEGA-Daten.",
+"interpretation": "Such minerals form only with liquid water. They show where water acted on rock, mostly more than 3.5 billion years ago, and are possible water sources for future crews (water can be baked out).",
+"interpretation_de": "Solche Minerale entstehen nur mit flüssigem Wasser. Sie zeigen, wo Wasser Gestein verändert hat – meist vor über 3,5 Milliarden Jahren – und sind mögliche Wasserquellen für künftige Crews (Wasser lässt sich ausheizen).",
+"instruments": [
+"CRISM (MRO)",
+"OMEGA (Mars Express)"
+],
+"claims": [
+{
+"conf": "maybe",
+"text": "Hydrous minerals at this spot.",
+"text_de": "Wasserhaltige Minerale an dieser Stelle.",
+"why": "Orbital spectra; detection limit and pixel size mean small or mixed deposits can be misread.",
+"why_de": "Orbitalspektren; Nachweisgrenze und Pixelgröße können kleine oder gemischte Vorkommen verfälschen."
+},
+{
+"conf": "safe",
+"text": "Liquid water altered much of the ancient crust.",
+"text_de": "Flüssiges Wasser veränderte große Teile der alten Kruste.",
+"why": "Global pattern confirmed by rovers.",
+"why_de": "Globales Muster von Rovern bestätigt."
+}
+],
+"sources": [
+"Carter et al. (2013) JGR Planets 118"
+]
+},
+"chloride": {
+"title": "Chloride-bearing deposit (THEMIS)",
+"title_de": "Chloridhaltige Ablagerung (THEMIS)",
+"what": "A light-toned patch whose thermal-infrared spectrum suggests chloride salts.",
+"what_de": "Eine helle Fläche, deren Thermal-Infrarotspektrum auf Chloridsalze hindeutet.",
+"history": "About 640 deposits mapped by Osterloo et al. (2008, 2010) in the southern highlands with THEMIS on Mars Odyssey.",
+"history_de": "Etwa 640 Ablagerungen, kartiert von Osterloo et al. (2008, 2010) im südlichen Hochland mit THEMIS auf Mars Odyssey.",
+"interpretation": "They often sit in low spots and channel ends, as expected for evaporated ponds or groundwater. Salt deposits preserve organic material well, so they are interesting targets.",
+"interpretation_de": "Sie liegen oft in Senken und an Kanalenden – wie bei verdunsteten Tümpeln oder Grundwasser zu erwarten. Salzablagerungen konservieren organisches Material gut und sind daher interessante Ziele.",
+"instruments": [
+"THEMIS (Mars Odyssey)",
+"CRISM (context)",
+"CTX / HiRISE (morphology)"
+],
+"claims": [
+{
+"conf": "maybe",
+"text": "Chloride salts are present.",
+"text_de": "Chloridsalze sind vorhanden.",
+"why": "Inferred from a featureless spectral slope, not a unique fingerprint; later CRISM work supports it.",
+"why_de": "Aus einem merkmalsarmen Spektralverlauf abgeleitet, kein eindeutiger Fingerabdruck; spätere CRISM-Arbeiten stützen es."
+},
+{
+"conf": "maybe",
+"text": "They formed by evaporating water.",
+"text_de": "Sie entstanden durch verdunstendes Wasser.",
+"why": "Geologic setting fits; alternatives (volcanic, hydrothermal) not excluded.",
+"why_de": "Geologischer Kontext passt; Alternativen (vulkanisch, hydrothermal) nicht ausgeschlossen."
+}
+],
+"sources": [
+"Osterloo et al. (2008) Science 319",
+"Osterloo et al. (2010) JGR 115"
+]
+},
+"surface:new crater": {
+"title": "New impact crater",
+"title_de": "Neuer Einschlagkrater",
+"what": "A crater that appeared between two orbital images, often with a dark blast zone. It tells how often meteorites hit Mars today – a hazard for bases.",
+"what_de": "Ein Krater, der zwischen zwei Orbitalbildern entstand, oft mit dunkler Explosionszone. Er zeigt, wie oft heute Meteoriten einschlagen – ein Risiko für Basen.",
+"history": "Found by repeated imaging with HiRISE and CTX on the Mars Reconnaissance Orbiter (since 2006); compiled in Mars Trek.",
+"history_de": "Gefunden durch wiederholte Aufnahmen mit HiRISE und CTX auf dem Mars Reconnaissance Orbiter (seit 2006); in Mars Trek zusammengestellt.",
+"interpretation": "A crater that appeared between two orbital images, often with a dark blast zone. It tells how often meteorites hit Mars today – a hazard for bases.",
+"interpretation_de": "Ein Krater, der zwischen zwei Orbitalbildern entstand, oft mit dunkler Explosionszone. Er zeigt, wie oft heute Meteoriten einschlagen – ein Risiko für Basen.",
+"instruments": [
+"HiRISE (MRO)",
+"CTX (MRO)",
+"CRISM (MRO)"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "The crater formed within the last decades.",
+"text_de": "Der Krater entstand in den letzten Jahrzehnten.",
+"why": "Absent in earlier images, present in later ones (before/after).",
+"why_de": "In früheren Bildern nicht da, in späteren schon (Vorher/Nachher)."
+}
+],
+"sources": [
+"Daubar et al. (2013) Icarus 225"
+]
+},
+"surface:icy impact site": {
+"title": "Fresh crater exposing ice",
+"title_de": "Frischer Krater mit freigelegtem Eis",
+"what": "A small new crater that dug up clean water ice from a few metres depth – direct evidence of buried ice at mid-latitudes, a key resource.",
+"what_de": "Ein kleiner neuer Krater, der sauberes Wassereis aus wenigen Metern Tiefe ausgrub – direkter Nachweis von vergrabenem Eis in mittleren Breiten, eine wichtige Ressource.",
+"history": "Found by repeated imaging with HiRISE and CTX on the Mars Reconnaissance Orbiter (since 2006); compiled in Mars Trek.",
+"history_de": "Gefunden durch wiederholte Aufnahmen mit HiRISE und CTX auf dem Mars Reconnaissance Orbiter (seit 2006); in Mars Trek zusammengestellt.",
+"interpretation": "A small new crater that dug up clean water ice from a few metres depth – direct evidence of buried ice at mid-latitudes, a key resource.",
+"interpretation_de": "Ein kleiner neuer Krater, der sauberes Wassereis aus wenigen Metern Tiefe ausgrub – direkter Nachweis von vergrabenem Eis in mittleren Breiten, eine wichtige Ressource.",
+"instruments": [
+"HiRISE (MRO)",
+"CTX (MRO)",
+"CRISM (MRO)"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Bright material in the crater is water ice.",
+"text_de": "Helles Material im Krater ist Wassereis.",
+"why": "It faded by sublimation over months; CRISM spectra confirmed water ice at some sites.",
+"why_de": "Es verblasste über Monate durch Sublimation; CRISM-Spektren bestätigten Wassereis an einigen Stellen."
+},
+{
+"conf": "maybe",
+"text": "Ice lies below the surface around this site.",
+"text_de": "Um diese Stelle liegt Eis im Untergrund.",
+"why": "Extent is estimated from few craters and radar.",
+"why_de": "Ausdehnung aus wenigen Kratern und Radar geschätzt."
+}
+],
+"sources": [
+"Byrne et al. (2009) Science 325; Dundas et al. (2014) JGR Planets 119"
+]
+},
+"surface:confirmed recurring slope lineae (RSL)": {
+"title": "Recurring slope lineae (confirmed)",
+"title_de": "Wiederkehrende Hangstreifen (RSL, bestätigt)",
+"what": "Narrow dark streaks on steep slopes that appear in warm seasons. First seen as possible brine flows, now mostly explained as dry sand and dust flows.",
+"what_de": "Schmale dunkle Streifen an steilen Hängen in warmen Jahreszeiten. Zuerst als mögliche Salzwasserflüsse gedeutet, heute meist als trockene Sand- und Staubflüsse erklärt.",
+"history": "Found by repeated imaging with HiRISE and CTX on the Mars Reconnaissance Orbiter (since 2006); compiled in Mars Trek.",
+"history_de": "Gefunden durch wiederholte Aufnahmen mit HiRISE und CTX auf dem Mars Reconnaissance Orbiter (seit 2006); in Mars Trek zusammengestellt.",
+"interpretation": "Narrow dark streaks on steep slopes that appear in warm seasons. First seen as possible brine flows, now mostly explained as dry sand and dust flows.",
+"interpretation_de": "Schmale dunkle Streifen an steilen Hängen in warmen Jahreszeiten. Zuerst als mögliche Salzwasserflüsse gedeutet, heute meist als trockene Sand- und Staubflüsse erklärt.",
+"instruments": [
+"HiRISE (MRO)",
+"CTX (MRO)",
+"CRISM (MRO)"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Dark streaks grow on warm slopes each season and fade.",
+"text_de": "Dunkle Streifen wachsen jede Saison an warmen Hängen und verblassen.",
+"why": "Repeated HiRISE imaging over several Mars years.",
+"why_de": "Wiederholte HiRISE-Aufnahmen über mehrere Marsjahre."
+},
+{
+"conf": "not",
+"text": "They are caused by flowing liquid (salty) water.",
+"text_de": "Sie werden von fließendem (salzigem) Wasser verursacht.",
+"why": "Hydrated-salt spectra were later questioned; streaks stop where dry sand would (granular flow).",
+"why_de": "Spektren hydratisierter Salze wurden später angezweifelt; Streifen enden dort, wo trockener Sand enden würde (Rieselfluss)."
+}
+],
+"sources": [
+"McEwen et al. (2011) Science 333; Ojha et al. (2015) Nat. Geosci. 8; Dundas et al. (2017) Nat. Geosci. 10"
+]
+},
+"surface:partially confirmed recurring slope lineae (RSL)": {
+"title": "Recurring slope lineae (candidate)",
+"title_de": "Wiederkehrende Hangstreifen (Kandidat)",
+"what": "Slope streaks that look like RSL but have not shown all the typical behaviour.",
+"what_de": "Hangstreifen, die wie RSL aussehen, aber noch nicht das ganze typische Verhalten gezeigt haben.",
+"history": "Found by repeated imaging with HiRISE and CTX on the Mars Reconnaissance Orbiter (since 2006); compiled in Mars Trek.",
+"history_de": "Gefunden durch wiederholte Aufnahmen mit HiRISE und CTX auf dem Mars Reconnaissance Orbiter (seit 2006); in Mars Trek zusammengestellt.",
+"interpretation": "Slope streaks that look like RSL but have not shown all the typical behaviour.",
+"interpretation_de": "Hangstreifen, die wie RSL aussehen, aber noch nicht das ganze typische Verhalten gezeigt haben.",
+"instruments": [
+"HiRISE (MRO)",
+"CTX (MRO)",
+"CRISM (MRO)"
+],
+"claims": [
+{
+"conf": "maybe",
+"text": "These are true recurring slope lineae.",
+"text_de": "Es handelt sich um echte RSL.",
+"why": "Not all criteria (seasonal growth, fading, recurrence) observed yet.",
+"why_de": "Noch nicht alle Kriterien (saisonales Wachstum, Verblassen, Wiederkehr) beobachtet."
+},
+{
+"conf": "not",
+"text": "Liquid water flows here.",
+"text_de": "Hier fließt flüssiges Wasser.",
+"why": "See confirmed RSL: dry granular flow is now favoured.",
+"why_de": "Siehe bestätigte RSL: trockener Rieselfluss wird heute bevorzugt."
+}
+],
+"sources": [
+"McEwen et al. (2011) Science 333; Stillman et al. (2014) Icarus 233"
+]
+},
+"surface:active gully": {
+"title": "Active gully",
+"title_de": "Aktive Rinne (Gully)",
+"what": "Gullies look like water-carved channels. Many are still active today, mostly in winter when carbon-dioxide frost forms and sublimates.",
+"what_de": "Rinnen sehen wie vom Wasser gegraben aus. Viele sind noch heute aktiv, vor allem im Winter, wenn Kohlendioxid-Reif entsteht und sublimiert.",
+"history": "Found by repeated imaging with HiRISE and CTX on the Mars Reconnaissance Orbiter (since 2006); compiled in Mars Trek.",
+"history_de": "Gefunden durch wiederholte Aufnahmen mit HiRISE und CTX auf dem Mars Reconnaissance Orbiter (seit 2006); in Mars Trek zusammengestellt.",
+"interpretation": "Gullies look like water-carved channels. Many are still active today, mostly in winter when carbon-dioxide frost forms and sublimates.",
+"interpretation_de": "Rinnen sehen wie vom Wasser gegraben aus. Viele sind noch heute aktiv, vor allem im Winter, wenn Kohlendioxid-Reif entsteht und sublimiert.",
+"instruments": [
+"HiRISE (MRO)",
+"CTX (MRO)",
+"CRISM (MRO)"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "The gully changed in recent years.",
+"text_de": "Die Rinne hat sich in den letzten Jahren verändert.",
+"why": "New channels and deposits in repeated HiRISE images.",
+"why_de": "Neue Kanäle und Ablagerungen in wiederholten HiRISE-Bildern."
+},
+{
+"conf": "maybe",
+"text": "The changes are driven by seasonal CO₂ frost, not liquid water.",
+"text_de": "Die Änderungen treibt saisonaler CO₂-Reif an, nicht flüssiges Wasser.",
+"why": "Timing matches winter frost; water may have formed older gullies.",
+"why_de": "Zeitpunkt passt zum Winterreif; ältere Rinnen könnte Wasser geformt haben."
+}
+],
+"sources": [
+"Dundas et al. (2012) Icarus 220; Dundas et al. (2019) Geol. Soc. Spec. Publ. 467"
+]
+},
+"surface:dune or sandy gully": {
+"title": "Dune gully",
+"title_de": "Dünenrinne",
+"what": "Gullies on sand dunes that change every winter/spring, likely by carbon-dioxide frost and ice blocks.",
+"what_de": "Rinnen auf Sanddünen, die sich jeden Winter/Frühling ändern, wohl durch Kohlendioxid-Reif und Eisblöcke.",
+"history": "Found by repeated imaging with HiRISE and CTX on the Mars Reconnaissance Orbiter (since 2006); compiled in Mars Trek.",
+"history_de": "Gefunden durch wiederholte Aufnahmen mit HiRISE und CTX auf dem Mars Reconnaissance Orbiter (seit 2006); in Mars Trek zusammengestellt.",
+"interpretation": "Gullies on sand dunes that change every winter/spring, likely by carbon-dioxide frost and ice blocks.",
+"interpretation_de": "Rinnen auf Sanddünen, die sich jeden Winter/Frühling ändern, wohl durch Kohlendioxid-Reif und Eisblöcke.",
+"instruments": [
+"HiRISE (MRO)",
+"CTX (MRO)",
+"CRISM (MRO)"
+],
+"claims": [
+{
+"conf": "safe",
+"text": "Channels on dunes form and change seasonally.",
+"text_de": "Rinnen auf Dünen entstehen und verändern sich saisonal.",
+"why": "Repeated HiRISE images.",
+"why_de": "Wiederholte HiRISE-Aufnahmen."
+},
+{
+"conf": "maybe",
+"text": "Sliding blocks of CO₂ ice carve them.",
+"text_de": "Gleitende CO₂-Eisblöcke graben sie.",
+"why": "Observed pits and timing support it; not seen directly.",
+"why_de": "Beobachtete Gruben und Zeitpunkt sprechen dafür; nicht direkt gesehen."
+}
+],
+"sources": [
+"Diniega et al. (2013) Icarus 225; Dundas et al. (2012) Icarus 220"
+]
+}
+},
+"note": "Compiled for MARS Pathfinder (Space Apps 2026) from the cited peer-reviewed literature and NASA mission records; ratings are the team's assessment."
+}

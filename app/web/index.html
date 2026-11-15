@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="generator" content="Written with AI assistance (Anthropic Claude), reviewed by the team">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MARS Pathfinder</title>
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">MARS Pathfinder<span class="brand-sub">Marswalk Planner</span></div>
+    <div class="site-switch" id="site-switch" role="tablist"></div>
+    <form id="goto-form" class="goto" autocomplete="off">
+      <input id="goto-input" type="text" placeholder="Coordinate, e.g. 4.59S 137.44E" spellcheck="false">
+      <button type="submit">Go to</button>
+    </form>
+    <div class="lang-switch" id="lang-switch">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="de">DE</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="panel panel-left">
+      <div class="panel-title">Map layers</div>
+      <details class="panel-section" open>
+        <summary>Base map</summary>
+        <ul id="basemap-list" class="layer-list"></ul>
+      </details>
+      <details class="panel-section" id="site-section" open hidden>
+        <summary>Local imagery</summary>
+        <ul id="site-layer-list" class="layer-list"></ul>
+      </details>
+      <details class="panel-section" open>
+        <summary>Thematic maps</summary>
+        <select id="th-theme" class="th-theme"></select>
+        <ul id="th-list" class="layer-list th-list"></ul>
+        <div class="env-row"><input type="range" id="th-opacity" class="opacity" min="0.2" max="1" step="0.05" value="0.75" title="Opacity"><button id="th-off" type="button">Off</button></div>
+        <div id="th-legend" class="env-legend"></div>
+        <div id="th-status" class="small muted"></div>
+      </details>
+      <details class="panel-section">
+        <summary>Environment &amp; Mars time</summary>
+        <div class="env-side">
+          <div class="small muted">Model layers from NASA data – time-dependent.</div>
+          <ul class="layer-list env-layer-list">
+            <li><label class="check"><input type="radio" name="env-layer" value="none" checked> Off</label></li>
+            <li><label class="check"><input type="radio" name="env-layer" value="temp"> Surface temperature</label></li>
+            <li><label class="check"><input type="radio" name="env-layer" value="gcr"> Cosmic radiation dose</label></li>
+            <li><label class="check"><input type="radio" name="env-layer" value="uv"> UV irradiance</label></li>
+            <li><label class="check"><input type="radio" name="env-layer" value="soil"> Soil radioactivity (K, Th)</label></li>
+            <li><label class="check"><input type="radio" name="env-layer" value="ti"> Thermal inertia (TES, measured)</label></li>
+          </ul>
+          <label class="small env-time-l">Time (UTC) <input id="env-utc" type="datetime-local" step="60"></label>
+          <div class="env-row">
+            <button id="env-now" type="button">Now</button>
+            <button id="env-play" type="button">▶ Play one sol</button>
+          </div>
+          <label class="small">Dust <select id="env-tau">
+            <option value="0.3">clear (τ 0.3)</option>
+            <option value="0.5">typical (τ 0.5)</option>
+            <option value="1">dusty (τ 1.0)</option>
+            <option value="2.5">dust storm (τ 2.5)</option>
+          </select></label>
+          <input type="range" id="env-opacity" class="opacity" min="0.2" max="1" step="0.05" value="0.7" title="Opacity">
+          <div id="env-status" class="small muted"></div>
+          <div id="env-legend"></div>
+          <div class="small muted">Click the map for all values at a place.</div>
+        </div>
+      </details>
+      <details class="panel-section" open>
+        <summary>NASA findings</summary>
+        <ul id="poi-list" class="layer-list poi-list"></ul>
+        <button id="kb-open" type="button" class="kb-open">ℹ All findings explained (Safe / Maybe / Not safe)</button>
+        <div class="small muted"><span class="badge badge-derived">Derived</span> detections from NASA Mars Trek (CRISM, OMEGA, THEMIS, HiRISE); click a point for source and citation.</div>
+      </details>
+      <details class="panel-section">
+        <summary>More overlays</summary>
+
+        <label class="check"><input type="checkbox" id="toggle-geology"> Geologic map</label>
+        <input type="range" id="geology-opacity" class="opacity" min="0" max="100" value="45" title="Opacity" hidden>
+        <div id="geology-legend" class="geology-legend"></div>
+        <div class="small muted geology-source"><span class="badge badge-derived">Derived</span> mapped interpretation · <span id="geology-source"></span></div>
+        <div class="sub-title">Science overlays</div>
+
+        <ul id="overlay-list" class="layer-list"></ul>
+      </details>
+      <details class="panel-section">
+        <summary>Map elements</summary>
+        <label class="check"><input type="checkbox" id="toggle-landmarks" checked> Landing sites</label>
+        <label class="check"><input type="checkbox" id="toggle-traverse" checked> Rover traverse (NASA/JPL)</label>
+        <label class="check"><input type="checkbox" id="toggle-dtm" checked> DTM coverage (HiRISE, 1 m)</label>
+        <label class="check"><input type="checkbox" id="toggle-graticule" checked> Graticule</label>
+      </details>
+    </aside>
+
+    <div class="map-column">
+      <div id="cut-panel" class="cut-panel" hidden>
+        <div class="cut-head"><b>3D cut-out</b> <button id="cut-close" type="button" title="Close">✕</button></div>
+        <div id="cut-hint" class="small muted"></div>
+        <div class="cut-grid small">
+          <label>N <input id="cut-n" type="number" step="0.0001"></label>
+          <label>S <input id="cut-s" type="number" step="0.0001"></label>
+          <label>W <input id="cut-w" type="number" step="0.0001"></label>
+          <label>E <input id="cut-e" type="number" step="0.0001"></label>
+        </div>
+        <label class="small cut-res">Detail <select id="cut-res">
+          <option value="1024">Standard (≤ 1024 points/side)</option>
+          <option value="2048" selected>Fine (≤ 2048)</option>
+          <option value="3072">Very fine (≤ 3072)</option>
+          <option value="4096">Maximum (≤ 4096, slow)</option>
+        </select></label>
+        <div id="cut-info" class="small"></div>
+        <div class="actions">
+          <button id="cut-open" type="button" class="primary">Open in 3D</button>
+          <button id="cut-redraw" type="button">Draw again</button>
+        </div>
+      </div>
+      <div id="map"></div>
+      <div id="route-cards" class="route-cards" hidden>
+        <div class="cards">
+            <div class="card"><span class="card-label">Length</span><b id="rs-length"></b></div>
+            <div class="card"><span class="card-label">Ascent / descent</span><b id="rs-updown"></b></div>
+            <div class="card"><span class="card-label">Travel time</span><b id="rs-time"></b></div>
+            <div class="card"><span class="card-label">Max. slope</span><b id="rs-slope-max"></b></div>
+          </div>
+      </div>
+      <div id="route-dock" class="route-dock" hidden>
+        <div class="dock-head"><b>🕒 Start time and route walk</b></div>
+          <div class="route-time">
+            <div class="env-row">
+              <label class="field-inline small">Start (UTC) <input id="rt-start" type="datetime-local" step="60"></label>
+              <label class="field-inline small">or next local time <select id="rt-local">
+                <option value="">–</option><option value="6">06:00</option><option value="7">07:00</option><option value="8">08:00</option>
+                <option value="9">09:00</option><option value="10">10:00</option><option value="12">12:00</option><option value="14">14:00</option>
+              </select></label>
+            </div>
+            <div id="rt-summary"></div>
+            <button id="rt-play" type="button" class="primary">▶ Walk the route</button>
+          </div>
+      <div id="anim-panel" class="anim-panel anim-inner" hidden>
+        <div class="anim-head">
+          <b>Route walk</b>
+          <button id="anim-toggle" type="button">⏸</button>
+          <select id="anim-speed" title="Simulated hours per second">
+            <option value="0.25">1 h = 4 s</option>
+            <option value="0.5" selected>1 h = 2 s</option>
+            <option value="2">1 h = 0.5 s</option>
+          </select>
+          <button id="anim-close" type="button" title="Close">✕</button>
+        </div>
+        <div class="anim-top">
+          <div class="anim-chart-wrap"><canvas id="anim-chart"></canvas><div id="anim-cursor" class="anim-cursor"></div></div>
+          <div id="anim-crew" class="anim-crew"></div>
+        </div>
+        <div class="anim-legend small"><span class="sw sw-t"></span> ground temperature <span class="sw sw-d"></span> accumulated dose <span class="sw sw-n"></span> night</div>
+        <input id="anim-slider" type="range" min="0" max="1" step="0.001" value="0">
+        <div id="anim-read"></div>
+      </div>
+      </div>
+      <section id="profile-panel" class="profile-panel" hidden>
+        <div class="profile-head">
+          <span>Elevation profile (HiRISE DTM)</span>
+          <span class="profile-legend">
+            <i style="background:#4f9d69"></i><span>below caution limit</span>
+            <i style="background:#d0a03a"></i><span>caution</span>
+            <i style="background:#c4473f"></i><span>critical</span>
+            <i style="background:#8a919c"></i><span>no data</span>
+            <i style="background:#a0703c"></i><span>low night IR</span>
+            <i style="background:#8fc1dc"></i><span>high night IR</span>
+          </span>
+          <span id="profile-readout" class="profile-readout"></span>
+        </div>
+        <canvas id="profile-canvas"></canvas>
+      </section>
+    </div>
+
+    <aside class="panel panel-right">
+      <nav class="tabs" id="tabs">
+        <button type="button" data-tab="route" class="active">Route</button>
+        <button type="button" data-tab="point">Point</button>
+        <button type="button" data-tab="zones">Zones</button>
+        <button type="button" data-tab="bases">Bases</button>
+        <button type="button" data-tab="settings">Settings</button>
+        <button type="button" data-tab="data">Data</button>
+      </nav>
+
+      <div class="tab-pane active" data-pane="route">
+        <div class="plan-for">
+          <div id="mob-summary" class="small"></div>
+          <button id="mob-open" type="button">⚙ Change in Settings</button>
+        </div>
+
+        <div class="route-mode">
+          <div class="step-subtitle"><span class="mode-tag">A</span> Draw it yourself</div>
+          <div class="actions">
+            <button id="route-draw" type="button" class="primary">Draw route</button>
+            <button id="route-improve" type="button" class="improve-btn" title="Keep the shape of your drawn route (your waypoints stay as via points) and replace each piece by the safest path">✦ Improve (make safe)</button>
+            <button id="route-example" type="button" hidden>Load example route</button>
+            <label class="import-label"><input id="import-route" type="file" accept=".geojson,.json,application/geo+json"><span>Import</span></label>
+          </div>
+          <div class="actions secondary-actions">
+            <button id="route-undo" type="button" title="Remove last waypoint">↶ <span>Undo</span></button>
+            <button id="route-reverse" type="button" title="Reverse direction">⇄ <span>Reverse</span></button>
+            <button id="route-clear" type="button" title="Remove the drawn route">✕ <span>Clear</span></button>
+          </div>
+          <details class="how small">
+            <summary>How it works</summary>
+            <div>click “Draw route”, then click waypoints on the map in walking order (drag them to adjust). Elevation is loaded from the best NASA/USGS model (HiRISE 1 m, CTX 20 m, else MOLA); every stretch is coloured by slope and checked for your profile. “Improve” keeps your waypoints as via points and replaces each piece with the safest path between them.</div>
+          </details>
+        </div>
+
+        <div class="auto-route route-mode">
+          <div class="step-subtitle"><span class="mode-tag">B</span> A → B planner (safest route)</div>
+          <div class="actions">
+            <button id="ab-set-a" type="button">Set A</button>
+            <button id="ab-set-b" type="button">Set B</button>
+            <button id="ab-set-via" type="button" title="Optional stops between A and B, in travel order">+ Via point</button>
+          </div>
+          <div class="actions secondary-actions">
+            <button id="ab-undo" type="button" title="Remove the last via point (then B, then A)">↶ <span>Undo</span></button>
+            <button id="ab-reverse" type="button" title="Swap A and B">⇄ <span>Reverse</span></button>
+            <button id="ab-clear" type="button" title="Remove A, B, via points and the planned route">✕ <span>Clear</span></button>
+          </div>
+          <label class="field-inline small ab-priority">Priority <input id="ab-priority" type="range" min="1" max="5" step="1" value="3"> <span id="ab-priority-label">balanced</span></label>
+          <label class="check small"><input id="ab-hazard" type="checkbox"> Show hazard map of the planning grid</label>
+          <div class="hazard-legend small muted"><span><i style="background:#c4473f"></i>blocked</span><span><i style="background:#e0783c"></i>partly critical</span><span><i style="background:#d0a03a"></i>caution slope</span><span><i style="background:#9664c8"></i>loose ground (IR)</span><span><i style="background:#8a919c"></i>no DTM</span></div>
+          <button id="ab-plan" type="button" class="primary ab-plan-btn">Find safest route</button>
+          <div id="ab-status" class="small muted"></div>
+          <details class="how small">
+            <summary>How it works</summary>
+            <div>set A and B (optionally via points). The planner first finds a corridor on coarse elevation data, then plans legs of ≤ 1.8 km on a fine grid where every cell is checked against all DTM pixels inside it. It avoids slopes above your critical limit, steep grades, loose ground (THEMIS night IR) and areas without elevation data, and minimises travel time with your profile's physics. Unsafe spots found in the detailed check are fed back and the corridor is re-planned (up to 14 rounds). Priority shifts between fastest and safest.</div>
+          </details>
+        </div>
+        <div id="route-empty" class="muted hint">No route yet – use A or B above. Waypoints can be dragged.</div>
+        <div id="route-msg" class="route-msg"></div>
+
+        <div id="route-stats" hidden>
+          <details class="sec sec-crew" open>
+            <summary>🧑‍🚀 Astronaut / crew check</summary>
+          <div class="small muted">Crew, suit, equipment, rations and vehicle cargo are set in <a href="#" data-goto-tab="settings">⚙ Settings</a>.</div>
+
+          <div id="lg-out"></div>
+          </details>
+          <details class="sec" open>
+            <summary>⚠ Critical sections</summary>
+          <h3 class="subhead">Critical sections</h3>
+          <div id="route-dataq"></div>
+          <div id="route-warnings" class="warnings"></div>
+          </details>
+          <details class="sec">
+            <summary>Crew on foot vs. vehicle</summary>
+          <h3 class="subhead">Crew on foot vs. vehicle</h3>
+          <div id="route-crew" class="warnings"></div>
+          <div class="muted small">Suited astronauts must be able to walk slopes up to 20° (NASA xEVA requirement, EVA-EXP-0042). Steeper stretches are flagged even if a vehicle can drive them.</div>
+          </details>
+          <details class="sec">
+            <summary>Possible loose ground</summary>
+          <h3 class="subhead">Possible loose ground</h3>
+          <div id="route-ir-runs" class="warnings"></div>
+          <div class="muted small">THEMIS night IR in the lowest 10 % of the surroundings (±2 km): likely dust or loose sand, risk of wheel sinkage. Relative values, not calibrated.</div>
+          </details>
+          <details class="more">
+            <summary>All route values</summary>
+            <table class="kv">
+              <tr><th>Waypoints</th><td id="rs-waypoints"></td></tr>
+              <tr><th>DTM coverage</th><td id="rs-coverage"></td></tr>
+              <tr><th>Elevation min … max</th><td id="rs-elev"></td></tr>
+              <tr><th>Max. grade (along route)</th><td id="rs-grade"></td></tr>
+              <tr><th>Max. terrain slope</th><td id="rs-slope"></td></tr>
+              <tr><th>Limits caution / critical</th><td id="rs-threshold"></td></tr>
+              <tr><th>Share caution / critical</th><td id="rs-classes"></td></tr>
+              <tr><th>Mechanical energy (model)</th><td id="rs-energy"></td></tr>
+              <tr><th>Distance at reduced speed</th><td id="rs-slow"></td></tr>
+              <tr><th>Night IR low / high <span class="badge badge-derived">Derived</span></th><td id="rs-ir"></td></tr>
+            </table>
+            <div class="source-note small"><span class="badge badge-measured">Measured</span> elevation from USGS HiRISE stereo DTMs · <span class="badge badge-derived">Derived</span> slope, grade, distance<br><span id="rs-base"></span></div>
+            <div class="small">DTM: <span id="rs-dems"></span></div>
+          </details>
+
+          <h3 class="subhead">Export</h3>
+          <div class="actions">
+            <button id="export-report" type="button" class="primary">Mission report</button>
+            <button id="export-geojson" type="button">GeoJSON</button>
+            <button id="export-csv" type="button">CSV profile</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane" data-pane="point">
+        <div id="selection-empty" class="muted">Click the map to set a point.</div>
+        <table id="selection-table" class="kv" hidden>
+          <tr><th>Latitude</th><td id="sel-lat"></td></tr>
+          <tr><th>Longitude (0–360° E)</th><td id="sel-lon360"></td></tr>
+          <tr><th>Longitude (±180°)</th><td id="sel-lon180"></td></tr>
+          <tr><th>Decimal</th><td id="sel-decimal"></td></tr>
+          <tr><th>Elevation (DTM)</th><td id="sel-elev">–</td></tr>
+          <tr><th>Terrain slope</th><td id="sel-slope">–</td></tr>
+          <tr><th>Geologic unit</th><td id="sel-geo">–</td></tr>
+          <tr><th id="sel-dist-label">Distance to landing site</th><td id="sel-dist"></td></tr>
+        </table>
+        <details id="sel-geo-details" class="geo-details" hidden>
+          <summary id="sel-geo-name"></summary>
+          <div id="sel-geo-text" class="small"></div>
+        </details>
+        <div id="selection-actions" class="actions" hidden>
+          <button id="copy-coords" type="button">Copy coordinates</button>
+          <button id="clear-selection" type="button">Remove</button>
+        </div>
+        <h3 class="subhead">Ground view (rover raw images)</h3>
+        <div id="ground-view" class="ground-view"><div class="muted">Select a point or waypoint inside a site.</div></div>
+      </div>
+
+
+      <div class="tab-pane" data-pane="zones">
+        <h3 class="subhead">My zones</h3>
+        <p class="small muted">Mark and name areas anywhere on Mars – ore and resource finds, water ice, hazards, targets. Stored in this browser; export as GeoJSON to share.</p>
+        <div class="actions">
+          <button id="zone-draw-poly" type="button" class="primary">Draw zone</button>
+          <button id="zone-draw-circle" type="button">Circle zone</button>
+          <label class="field-inline small zone-radius">r <input id="zone-radius" type="number" min="0.01" step="0.1" value="1"> km</label>
+          <button id="zone-finish" type="button" hidden>Finish</button>
+        </div>
+        <div id="zone-hint" class="small muted"></div>
+        <div id="zone-form" class="zone-form" hidden>
+          <label class="small">Name <input id="zone-name" type="text" maxlength="80" placeholder="e.g. Hematite outcrop"></label>
+          <label class="small">Category <select id="zone-cat"></select></label>
+          <label class="small">Colour <input id="zone-color" type="color"></label>
+          <label class="small">Note <textarea id="zone-note" rows="2" maxlength="500"></textarea></label>
+          <label class="check small"><input id="zone-avoid" type="checkbox"> Route planner must avoid this zone</label>
+          <div class="actions">
+            <button id="zone-save" type="button" class="primary">Save zone</button>
+            <button id="zone-cancel" type="button">Cancel</button>
+          </div>
+        </div>
+        <div id="zone-list" class="zone-list"></div>
+        <div class="actions secondary-actions">
+          <button id="zone-export" type="button">Export GeoJSON</button>
+          <label class="import-label"><input id="zone-import" type="file" accept=".geojson,.json,application/geo+json"><span>Import</span></label>
+        </div>
+      </div>
+
+      <div class="tab-pane" data-pane="bases">
+        <h3 class="subhead">Bases and supplies</h3>
+        <p class="small muted">Place bases and list what is stored there – oxygen, water, food, medical kits, vehicles (with range and seats), tools, energy, suits. The route planner checks the crew logistics against the nearest base. Stored in this browser; export as JSON to share.</p>
+        <div class="actions">
+          <button id="base-place" type="button" class="primary">Place base</button>
+        </div>
+        <div id="base-hint" class="small muted"></div>
+        <div id="base-list" class="base-list"></div>
+        <div id="base-route-box" class="base-route" hidden>
+          <h3 class="subhead">Route between bases</h3>
+          <div class="env-row">
+            <label class="small">From <select id="base-from"></select></label>
+            <label class="small">to <select id="base-to"></select></label>
+          </div>
+          <div class="env-row">
+            <button id="base-route-safe" type="button" class="primary">Find safest route</button>
+            <button id="base-route-direct" type="button">Direct line</button>
+          </div>
+          <div class="small muted">The safest route uses the automatic A → B search with your vehicle / astronaut profile; the result appears in the Route tab with the astronaut check.</div>
+        </div>
+        <div class="actions secondary-actions">
+          <button id="base-export" type="button">Export JSON</button>
+          <label class="import-label"><input id="base-import" type="file" accept=".json,application/json"><span>Import</span></label>
+        </div>
+      </div>
+
+      <div class="tab-pane" data-pane="settings">
+        <h3 class="subhead">Who travels?</h3>
+        <div class="mode-switch">
+          <label class="mode-opt"><input type="radio" name="travel-mode" value="astronaut"> <span>🧑‍🚀 Astronaut on foot</span></label>
+          <label class="mode-opt"><input type="radio" name="travel-mode" value="vehicle"> <span>🚙 Vehicle</span></label>
+        </div>
+        <div id="set-vehicle-pick" class="small">
+          <label class="field">Vehicle
+            <select id="mob-preset"></select>
+          </label>
+          <figure id="veh-photo" class="veh-photo" hidden>
+            <img alt="">
+            <figcaption></figcaption>
+          </figure>
+        </div>
+
+        <details class="sec" open>
+          <summary>Movement and slope limits</summary>
+          <p class="muted small">Slope limits are computed from Mars gravity, mass, power, soil friction and geometry. Check the proposal and apply it (or set your own limits).</p>
+          <div class="dialog-grid">
+      <div>
+        
+        <label class="field">Total mass incl. crew/payload <span><input id="mob-mass" type="number" min="1" step="1"> kg</span><small id="note-mass"></small></label>
+        <label class="field">Cruise speed <span><input id="mob-speed" type="number" min="0.1" step="0.1"> km/h</span><small id="note-speed"></small></label>
+        <label class="field">Minimum speed <span><input id="mob-minSpeed" type="number" min="0.05" step="0.05"> km/h</span><small id="note-minSpeed"></small></label>
+        <label class="field">Drive power <span><input id="mob-power" type="number" min="1" step="1"> W</span><small id="note-power"></small></label>
+        <label class="field">Rolling resistance Crr <span><input id="mob-crr" type="number" min="0.001" step="0.01"></span><small id="note-crr"></small></label>
+        <label class="field">Soil friction angle φ <span><input id="mob-friction" type="number" min="1" max="80" step="1"> °</span><small id="note-friction"></small></label>
+        <label class="field">Static tip-over angle <span><input id="mob-tipAngle" type="number" min="1" max="89" step="1"> °</span><small id="note-tipAngle"></small></label>
+        <label class="field">Safety factor <span><input id="mob-safety" type="number" min="1" step="0.1"></span><small id="note-safety"></small></label>
+      </div>
+      <div>
+        <h3 class="subhead">Calculation</h3>
+        <div id="mob-calc"></div>
+        <p class="muted small">Sliding and tip-over limits do not depend on mass or gravity (m·g cancels out). Mass and gravity decide through P = m·g·v·(sin θ + C<sub>rr</sub>·cos θ) how steep the vehicle can still climb with the given power.</p>
+        <div class="question">Do these limits fit your mission?</div>
+        <div class="actions">
+          <button id="mob-accept" type="button" class="primary">Yes, apply</button>
+          <button id="mob-adjust" type="button">No, adjust myself</button>
+          <button id="mob-cancel" type="button" hidden>Cancel</button>
+          <span id="mob-applied" class="small ok-note"></span>
+        </div>
+        <div id="mob-manual" class="manual" hidden>
+          <label>Caution from <input id="mob-manual-caution" type="number" min="0.1" max="89" step="0.5"> °</label>
+          <label>Critical from <input id="mob-manual-critical" type="number" min="0.1" max="89" step="0.5"> °</label>
+          <button id="mob-manual-apply" type="button" class="primary">Apply my values</button>
+          <div id="mob-manual-error" class="warn"></div>
+        </div>
+      </div>
+    </div>
+
+        </details>
+
+        <details class="sec set-astro" open>
+          <summary>🧑‍🚀 Crew, suit, equipment and rations</summary>
+          <div class="lg-grid small">
+              <label>Crew <input id="lg-crew" type="number" min="1" max="12" step="1"></label>
+              <label>Body mass kg <input id="lg-body" type="number" min="40" max="140" step="1"></label>
+              <label>Suit + life support kg <input id="lg-suit" type="number" min="0" max="200" step="1"></label>
+              <label>Ground <select id="lg-terrain"><option value="1.1">firm</option><option value="1.5">loose regolith</option><option value="2.1">sand</option></select></label>
+              <label>Suit O₂ kg <input id="lg-o2kg" type="number" min="0.1" max="5" step="0.05"></label>
+              <label>EVA limit h <input id="lg-evaH" type="number" min="1" max="24" step="0.5"></label>
+              <label>Drink bag L <input id="lg-drinkL" type="number" min="0" max="5" step="0.05"></label>
+              <label>Absorbent garment L <input id="lg-magL" type="number" min="0" max="5" step="0.1"></label>
+              <label>Rations carried kcal <input id="lg-foodKcal" type="number" min="0" step="50"></label>
+            </div>
+            <div class="small lg-eq-title">Equipment carried per person</div>
+            <div id="lg-items" class="lg-items"></div>
+          
+        </details>
+
+        <details class="sec set-vehicle" open>
+          <summary>🚙 Vehicle seats, range and supplies on board</summary>
+          <div class="lg-grid small">
+            <label>Crew <input id="lg-crew-v" type="number" min="1" max="12" step="1"></label>
+            <label>Seats <input id="lg-vSeats" type="number" min="1" max="20" step="1"></label>
+            <label>Range km <input id="lg-vRange" type="number" min="1" step="1"></label>
+            <label>Pressurised cabin <select id="lg-vPress"><option value="0">no (crew in suits)</option><option value="1">yes</option></select></label>
+            <label>O₂ on board kg <input id="lg-vO2" type="number" min="0" step="0.5"></label>
+            <label>Water on board L <input id="lg-vWater" type="number" min="0" step="1"></label>
+            <label>Rations on board kcal <input id="lg-vFood" type="number" min="0" step="100"></label>
+            <label>Medical kits <input id="lg-vMed" type="number" min="0" step="1"></label>
+          </div>
+          <div class="small muted">Used by the crew check on the Route tab: seats vs. crew, range vs. route + way back, and O₂ (0.84 kg), water (≈3 L) and food (≈3000 kcal) per person and day (NASA planning values) for the trip duration.</div>
+        </details>
+
+        <details class="sec">
+          <summary>🌍 Mars time, weather and EVA radiation</summary>
+        <h3 class="subhead">Mars time</h3>
+        <div id="env-marsclock"></div>
+        <h3 class="subhead">Weather</h3>
+        <div id="env-weather"><div class="muted">Select Jezero or Gale.</div></div>
+        <h3 class="subhead">Radiation during the EVA</h3>
+        <label class="field-inline small">EVA duration <input id="env-eva-hours" type="number" min="0.1" step="0.1"> h <span class="muted">(default: route travel time)</span></label>
+        <div id="env-dose"></div>
+
+        </details>
+      </div>
+
+      <div class="tab-pane" data-pane="data">
+        <h3 class="subhead">Data source</h3>
+        <div id="source-info" class="source-info"></div>
+        <h3 class="subhead">Data classes</h3>
+        <ul class="class-legend">
+          <li><span class="badge badge-measured">Measured</span> <span>directly from instrument data</span></li>
+          <li><span class="badge badge-derived">Derived</span> <span>computed / visualized from measurements</span></li>
+          <li><span class="badge badge-illustrative">Illustrative</span> <span>placeholder or assumption, not measured</span></li>
+        </ul>
+        <h3 class="subhead">About</h3>
+        <p class="small muted">MARS Pathfinder – NASA Space Apps Challenge 2026, challenge “Interplanetary Survival Guide: Martian Map”. Coordinates: Mars 2000 sphere, planetocentric latitude, east longitude.</p>
+      </div>
+    </aside>
+  </main>
+
+
+  <dialog id="globe-dialog" class="globe-dialog">
+    <div class="kb-head"><b>Mars – globe view</b><span class="small muted" id="globe-read"></span><span id="globe-overlay-row" class="small"><label class="check"><input id="globe-overlay" type="checkbox" checked> show active thematic layer</label></span><label class="check small"><input id="globe-features" type="checkbox" checked> labels, markers, zones, bases, route</label><select id="globe-light" class="small"><option value="sun">Sunlight (real time)</option><option value="full">Fully lit</option></select><button id="globe-close" type="button">Close</button></div>
+    <div id="globe-canvas" class="globe-canvas"></div>
+    <div class="small muted globe-foot"><span id="globe-sun"></span> · Viking MDIM 2.1 colour mosaic (NASA/USGS, via Mars Trek). Drag to rotate, scroll to zoom, click a place to open the map there.</div>
+  </dialog>
+
+  <dialog id="kb-dialog" class="dialog kb-dialog">
+    <div class="kb-head"><button id="kb-back" type="button">← Overview</button><button id="kb-close" type="button">Close</button></div>
+    <div id="kb-body" class="kb-body"></div>
+  </dialog>
+
+  <dialog id="view3d" class="view3d">
+    <div class="view3d-head">
+      <div><b id="v3d-title">3D view</b> <span id="v3d-sub" class="muted small"></span></div>
+      <div class="view3d-controls small">
+        <label>Area <select id="v3d-size"><option value="40">80 m</option><option value="80" selected>160 m</option><option value="160">320 m</option><option value="320">640 m</option></select></label>
+        <label hidden>Detail <select id="v3d-res">
+          <option value="1024">Standard (≤ 1024)</option>
+          <option value="2048">Fine (≤ 2048)</option>
+          <option value="3072">Very fine (≤ 3072)</option>
+          <option value="4096">Maximum (≤ 4096)</option>
+        </select></label>
+        <label>Surface <select id="v3d-surface">
+          <option value="photo">Photo (CTX / HiRISE)</option>
+          <option value="both" selected>Photo + hazards</option>
+          <option value="slope">Slope classes</option>
+        </select></label>
+        <label>Vertical exaggeration <input id="v3d-exag" type="range" min="1" max="4" step="0.5" value="1.5"> <span id="v3d-exag-val">1.5×</span></label>
+        <label class="check"><input id="v3d-pillars" type="checkbox" checked> Hazard pillars</label>
+        <label>Reference <select id="v3d-figure"><option value="astronaut">Astronaut</option><option value="rover">Rover</option><option value="both">Rover + astronaut</option><option value="none">None</option></select></label>
+        <button id="v3d-focus" type="button">Close-up</button>
+        <button id="v3d-close" type="button">Close</button>
+      </div>
+    </div>
+    <div class="view3d-body">
+      <div id="v3d-canvas"><div id="v3d-status" class="v3d-status"></div></div>
+      <aside class="view3d-side small">
+        <table id="v3d-stats" class="kv"></table>
+        <ul class="v3d-legend">
+          <li><i style="background:#9a7659"></i>slope below caution</li>
+          <li><i style="background:#d0a03a"></i>caution slope</li>
+          <li><i style="background:#c4473f"></i>at/above critical slope</li>
+          <li><i class="outline" style="border-color:#c4473f"></i>hazard pillar: ≥ 15 % of the block critical</li>
+          <li><i class="outline" style="border-color:#e0903c"></i>hazard pillar: ≥ 40 % of the block caution</li>
+          <li><i style="background:#4fbf6a"></i>route</li>
+          <li><i class="outline dashed" style="border-color:#f0a0c0"></i>hazard zone of the section</li>
+        </ul>
+        <p class="muted">
+          <span class="badge badge-measured">Measured</span> <span>terrain: HiRISE DTM.</span>
+          <span class="badge badge-derived">Derived</span> <span>slope colours.</span>
+          <span class="badge badge-illustrative">Illustrative</span> <span>pillar height is a symbol, not a measurement.</span>
+          <span>Astronaut (1.8 m) and rover (Apollo LRV, 3.1 × 1.83 m) at true scale; the rover is tilted to the DTM surface.</span>
+          <span>Drag to rotate, scroll to zoom, right-drag to pan.</span>
+        </p>
+      </aside>
+    </div>
+    <div id="v3d-readout" class="small mono v3d-readout"></div>
+  </dialog>
+
+  <dialog id="lightbox" class="lightbox">
+    <div class="lightbox-body">
+      <img id="lightbox-img" alt="">
+      <aside class="lightbox-side">
+        <div id="lightbox-geom" class="small muted"></div>
+      </aside>
+    </div>
+    <div class="lightbox-bar">
+      <div id="lightbox-caption" class="small"></div>
+      <button id="lightbox-close" type="button">Close</button>
+    </div>
+  </dialog>
+
+  <footer class="statusbar">
+    <span>Cursor <b id="status-cursor">–</b></span>
+    <span>Zoom <b id="status-zoom">–</b></span>
+    <span>Resolution <b id="status-res">–</b></span>
+    <span id="status-tiles" class="status-tiles"></span>
+    <span class="status-credit">Tiles: NASA/JPL-Caltech Mars Trek · USGS Astrogeology</span>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/media.js"></script>
+  <script src="js/ui-extra.js"></script>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/mars.js"></script>
+  <script src="js/datasets.js"></script>
+  <script src="vendor/geotiff/geotiff.js"></script>
+  <script src="js/dem.js"></script>
+  <script src="js/mobility.js"></script>
+  <script src="js/thermal.js"></script>
+  <script src="js/route.js"></script>
+  <script src="js/pathfinder.js"></script>
+  <script src="js/vision.js"></script>
+  <script src="js/rover.js"></script>
+  <script src="js/geology.js"></script>
+  <script src="js/environment.js"></script>
+  <script src="js/terrain3d.js"></script>
+  <script src="js/poi.js"></script>
+  <script src="js/kb.js"></script>
+  <script src="js/zones.js"></script>
+  <script src="js/imagery.js"></script>
+  <script src="js/cut3d.js"></script>
+  <script src="js/marstime.js"></script>
+  <script src="js/climate.js"></script>
+  <script src="js/envui.js"></script>
+  <script src="js/bases.js"></script>
+  <script src="js/thematic.js"></script>
+  <script src="js/globe.js"></script>
+  <script src="js/logistics.js"></script>
+  <script src="js/sketch.js"></script>
+  <script src="js/app.js"></script>
+  <script type="importmap">{ "imports": { "three": "./vendor/three/three.module.min.js" } }</script>
+  <script type="module">
+    import * as THREE from "three";
+    import { OrbitControls } from "./vendor/three/OrbitControls.js";
+    window.THREE_MODS = { THREE, OrbitControls };
+    window.dispatchEvent(new Event("three-ready"));
+  </script>
+</body>
+</html>
